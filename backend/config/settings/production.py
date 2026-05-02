@@ -23,8 +23,13 @@ ALLOWED_HOSTS = env.list(
 CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", default=[])
 
 # Pool de connexions Postgres (Railway / Supabase)
-if "sqlite" not in DATABASES["default"].get("ENGINE", ""):
+_engine = DATABASES["default"].get("ENGINE", "")
+if "sqlite" not in _engine:
     DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)
+    # Railway / Supabase : connexion TLS souvent requise si l’URL ne précise pas sslmode
+    if env.bool("DATABASE_SSL_REQUIRE", default=True):
+        _opts = DATABASES["default"].setdefault("OPTIONS", {})
+        _opts.setdefault("sslmode", "require")
 
 # Sécurité renforcée derrière HTTPS
 if env.bool("DJANGO_SECURE_SSL_REDIRECT", default=False):

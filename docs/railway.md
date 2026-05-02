@@ -26,7 +26,12 @@
 | `CSRF_TRUSTED_ORIGINS` | recommandé | URLs HTTPS du **backend** (admin, POST). Ex. `https://ton-api.up.railway.app` |
 | `ALLOWED_HOSTS` | optionnel | Par défaut le code accepte `.up.railway.app` ; ajoute ton domaine custom si besoin (liste séparée par virgules) |
 | `CONN_MAX_AGE` | optionnel | Durée de persistance des connexions Postgres (secondes), défaut `60` |
+| `DATABASE_SSL_REQUIRE` | optionnel | défaut `true` : ajoute `sslmode=require` pour Postgres si l’URL ne le précise pas (Supabase / beaucoup d’hébergeurs). Mettre `false` si ta BDD refuse TLS. |
 | `DJANGO_SECURE_SSL_REDIRECT` | optionnel | `true` pour forcer les redirections HTTPS Django (souvent inutile derrière Railway) |
+
+### Healthcheck « service unavailable » après build OK
+
+Souvent : au **runtime**, Nixpacks n’expose pas `/opt/venv/bin` dans le `PATH`, donc `python` / `gunicorn` ne sont pas ceux du venv (Django absent → crash). Le `startCommand` dans `backend/railway.toml` force désormais ce venv. Vérifie aussi les **logs du conteneur** (onglet Deploy) pour un `migrate` qui échoue (mauvaise `DATABASE_URL`, SSL, etc.).
 
 ### SSH sur le service
 
