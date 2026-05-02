@@ -1,0 +1,20 @@
+---
+description: Site théâtre / thérapie — contexte produit et qualité
+alwaysApply: true
+---
+
+# Projet « New web site theatre »
+
+- **Domaine** : site pour la pièce / le théâtre-thérapie (projet Kenza, Paris). Ton **institutionnel** et **clair**, adapté au public grand public et aux partenaires.
+- **Langue du site** : français (titres, corps, métadonnées, formulaires).
+- **Contenu** : ne pas inventer dates, lieux, tarifs, noms ou citations **sans** source dans le dépôt (`docs/`, `_bmad-output/`, fichiers fournis). Marquer explicitement les placeholders si l’info manque.
+- **Qualité web** : accessibilité de base (contraste, hiérarchie titres, textes alternatifs pertinents), SEO minimal (titres uniques, descriptions), performance raisonnable (images optimisées).
+- **Code** : respecter la stack une fois choisie (BMAD/architecture). Pas de refactor large hors périmètre de la tâche.
+
+## Arborescence code (ce dépôt)
+
+- **Frontend** : `src/` — React + Vite (`lib/`, `integrations/supabase/`, `components/` au fil des besoins).
+- **Backend** : `backend/` — Django + DRF, API sous `/api/`, **PostgreSQL Supabase** via `DATABASE_URL`.
+- **Assets** : `public/`.
+- **Contenu optionnel** : `content/pages/`.
+- **Détail** : `docs/project-structure.md` ; règles Python : `.cursor/rules/theatre-backend.mdc`.

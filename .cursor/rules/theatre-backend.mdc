@@ -1,0 +1,12 @@
+---
+description: Backend Django / DRF — théâtre-thérapie Paris
+globs: backend/**/*.py
+alwaysApply: false
+---
+
+# Backend
+
+- Projet Django dans **`backend/`** ; `DJANGO_SETTINGS_MODULE=config.settings.local` en dev.
+- **Base** : `DATABASE_URL` pointant vers le **PostgreSQL Supabase** (session / direct, port 5432) — voir `backend/.env.example`.
+- Apps sous **`backend/apps/`** ; routes API sous préfixe **`/api/`**.
+- Pas de secrets dans le dépôt : uniquement `backend/.env` (gitignored).

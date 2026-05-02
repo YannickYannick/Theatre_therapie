@@ -1,0 +1,20 @@
+---
+description: BMAD Method — emplacement et usage dans ce dépôt
+alwaysApply: true
+---
+
+# BMAD dans ce projet
+
+- **Configuration** : `_bmad/` (core + module BMM). Ne pas supprimer les manifestes générés.
+- **Sorties** : `_bmad-output/` (artefacts de planification et d’implémentation).
+- **Documentation / connaissance** : `docs/` (PRD, recherche, notes projet).
+- **Skills agent Cursor** : `.agents/skills/` — workflows BMAD (PRD, architecture, stories, dev, revue, etc.).
+- **Langue** : français pour la communication et les documents (voir `_bmad/core/config.yaml` et `_bmad/bmm/config.yaml`).
+
+## Ordre de travail suggéré
+
+1. Démarrer par le skill **bmad-help** si tu ne sais pas quelle étape lancer.
+2. Planification : **bmad-create-prd** (PM), puis **bmad-create-architecture** (architecte), puis epics/stories.
+3. Implémentation : stories + **bmad-dev-story** / **bmad-code-review** selon les skills disponibles.
+
+Quand un artefact BMAD existe (PRD, architecture), **s’y conformer** plutôt que d’improviser la portée.
