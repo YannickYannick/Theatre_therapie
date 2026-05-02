@@ -1,7 +1,6 @@
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
+from django.http import JsonResponse
 
 
-@api_view(["GET"])
 def health(_request):
-    return Response({"status": "ok", "service": "theatre-therapy-paris-api"})
+    """Healthcheck Railway / LB : pas de DRF (évite 406 selon le header Accept)."""
+    return JsonResponse({"status": "ok", "service": "theatre-therapy-paris-api"})

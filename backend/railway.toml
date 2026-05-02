@@ -7,11 +7,9 @@ builder = "NIXPACKS"
 buildCommand = "DJANGO_SETTINGS_MODULE=config.settings.local python manage.py collectstatic --noinput"
 
 [deploy]
-# Même si la variable est définie dans le dashboard, on fixe ici le module importable
-# (évite les déploiements sans settings prod si le fichier n’est pas dans l’image).
-# Nixpacks installe les deps dans /opt/venv ; sans PATH explicite, `python`/`gunicorn`
-# peuvent être ceux du système (sans Django) → conteneur qui ne démarre pas.
-startCommand = "export DJANGO_SETTINGS_MODULE=config.settings.production && export PATH=\"/opt/venv/bin:$PATH\" && /opt/venv/bin/python manage.py migrate --noinput && exec /opt/venv/bin/gunicorn config.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120"
+# migrate en release : le conteneur web démarre tout de suite sur Gunicorn (healthcheck plus fiable).
+releaseCommand = "export DJANGO_SETTINGS_MODULE=config.settings.production && export PATH=\"/opt/venv/bin:$PATH\" && /opt/venv/bin/python manage.py migrate --noinput"
+startCommand = "export DJANGO_SETTINGS_MODULE=config.settings.production && export PATH=\"/opt/venv/bin:$PATH\" && exec /opt/venv/bin/gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 2 --threads 4 --timeout 120 --access-logfile - --error-logfile -"
 healthcheckPath = "/api/health/"
 healthcheckTimeout = 120
 restartPolicyType = "ON_FAILURE"

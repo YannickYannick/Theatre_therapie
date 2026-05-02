@@ -26,8 +26,9 @@ CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", default=[])
 _engine = DATABASES["default"].get("ENGINE", "")
 if "sqlite" not in _engine:
     DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)
-    # Railway / Supabase : connexion TLS souvent requise si l’URL ne précise pas sslmode
-    if env.bool("DATABASE_SSL_REQUIRE", default=True):
+    # Supabase / Postgres public : activer `DATABASE_SSL_REQUIRE=true` ou mettre sslmode dans l’URL.
+    # Défaut false : le plugin Postgres Railway gère souvent déjà TLS dans `DATABASE_URL`.
+    if env.bool("DATABASE_SSL_REQUIRE", default=False):
         _opts = DATABASES["default"].setdefault("OPTIONS", {})
         _opts.setdefault("sslmode", "require")
 

@@ -26,7 +26,7 @@
 | `CSRF_TRUSTED_ORIGINS` | recommandé | URLs HTTPS du **backend** (admin, POST). Ex. `https://ton-api.up.railway.app` |
 | `ALLOWED_HOSTS` | optionnel | Par défaut le code accepte `.up.railway.app` ; ajoute ton domaine custom si besoin (liste séparée par virgules) |
 | `CONN_MAX_AGE` | optionnel | Durée de persistance des connexions Postgres (secondes), défaut `60` |
-| `DATABASE_SSL_REQUIRE` | optionnel | défaut `true` : ajoute `sslmode=require` pour Postgres si l’URL ne le précise pas (Supabase / beaucoup d’hébergeurs). Mettre `false` si ta BDD refuse TLS. |
+| `DATABASE_SSL_REQUIRE` | optionnel | défaut `false`. Mets `true` pour forcer `sslmode=require` (ex. Postgres Supabase si l’URL n’inclut pas sslmode). |
 | `DJANGO_SECURE_SSL_REDIRECT` | optionnel | `true` pour forcer les redirections HTTPS Django (souvent inutile derrière Railway) |
 
 ### Healthcheck « service unavailable » après build OK
