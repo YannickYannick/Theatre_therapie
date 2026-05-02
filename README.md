@@ -39,3 +39,8 @@ npm run dev
 ## Documentation projet
 
 Voir `docs/project-structure.md` et le journal BMAD `docs/bmad/01-project_log.md`.
+
+## Déploiement Railway
+
+Configuration du service API, variables et SSH : **`docs/railway.md`**.  
+Dans Railway, définir la racine du service sur le dossier **`backend`**.
