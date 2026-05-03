@@ -1,6 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Mail, Sparkles, Users } from "lucide-react";
+
+import { fetchWorkshops, type WorkshopListItem, type WorkshopTone } from "@/lib/api";
+
+function isTone(v: string): v is WorkshopTone {
+  return v === "sky" || v === "mint";
+}
 
 const galleryImages = [
   "https://images.unsplash.com/photo-1503095396549-807759245b35?w=800&q=80",
@@ -12,6 +18,22 @@ const galleryImages = [
 ];
 
 export function HomePage() {
+  const [workshops, setWorkshops] = useState<WorkshopListItem[] | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchWorkshops()
+      .then((list) => {
+        if (!cancelled) setWorkshops(list);
+      })
+      .catch(() => {
+        if (!cancelled) setWorkshops([]);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   useEffect(() => {
     document.title = "Théâtre Thérapie — Ateliers de théâtre à Paris";
     const desc =
@@ -90,22 +112,25 @@ export function HomePage() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
-          <WorkshopCard
-            to="/emotions"
-            tone="sky"
-            level="Niveau 2"
-            title="Émotions encore et toujours"
-            description="Centré sur les émotions au plateau et leur utilisation juste et consciente. On y travaille la sincérité, la précision du jeu, l'écoute et la présence."
-            schedule="14h–16h · 7 séances"
-          />
-          <WorkshopCard
-            to="/impro"
-            tone="mint"
-            level="Tous niveaux"
-            title="Et... IMPRO"
-            description="Centré sur le jeu collectif et la prise de risque. On y travaille la confiance, l'écoute, la cohésion et le plaisir du plateau."
-            schedule="16h–18h · 7 séances"
-          />
+          {workshops === null && (
+            <p className="text-sm text-muted-foreground col-span-full">Chargement des ateliers…</p>
+          )}
+          {workshops && workshops.length === 0 && (
+            <p className="text-sm text-muted-foreground col-span-full">
+              Ateliers indisponibles pour le moment (API hors ligne ou aucun atelier publié).
+            </p>
+          )}
+          {workshops?.map((w) => (
+            <WorkshopCard
+              key={w.slug}
+              to={`/${w.slug}`}
+              tone={isTone(w.tone) ? w.tone : "sky"}
+              level={w.level_label}
+              title={w.title}
+              description={w.summary}
+              schedule={w.schedule_summary}
+            />
+          ))}
         </div>
       </section>
 
@@ -155,8 +180,8 @@ function WorkshopCard({
   description,
   schedule,
 }: {
-  to: "/emotions" | "/impro";
-  tone: "sky" | "mint";
+  to: string;
+  tone: WorkshopTone;
   level: string;
   title: string;
   description: string;

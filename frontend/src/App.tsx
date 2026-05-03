@@ -4,8 +4,7 @@ import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { HomePage } from "@/pages/HomePage";
 import { BiographiePage } from "@/pages/BiographiePage";
-import { EmotionsPage } from "@/pages/EmotionsPage";
-import { ImproPage } from "@/pages/ImproPage";
+import { WorkshopDetailPage } from "@/pages/WorkshopDetailPage";
 import { InscriptionPage } from "@/pages/InscriptionPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 
@@ -28,8 +27,8 @@ export default function App() {
       <Route element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="biographie" element={<BiographiePage />} />
-        <Route path="emotions" element={<EmotionsPage />} />
-        <Route path="impro" element={<ImproPage />} />
+        <Route path="emotions" element={<WorkshopDetailPage slug="emotions" />} />
+        <Route path="impro" element={<WorkshopDetailPage slug="impro" />} />
         <Route path="inscription" element={<InscriptionPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>

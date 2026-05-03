@@ -47,18 +47,26 @@ export function WorkshopHero({
 export function PracticalInfo({
   schedule,
   dates,
+  location = "Paris 13e",
+  maxStudents = 8,
+  priceDisplay = "175 € (25 €/séance)",
+  sessionsLabel = "7 séances",
   extra,
 }: {
   schedule: string;
   dates: string;
+  location?: string;
+  maxStudents?: number;
+  priceDisplay?: string;
+  sessionsLabel?: string;
   extra?: ReactNode;
 }) {
   const items = [
-    { icon: Calendar, label: "7 séances", value: dates },
+    { icon: Calendar, label: sessionsLabel, value: dates },
     { icon: Clock, label: "Horaires", value: schedule },
-    { icon: MapPin, label: "Lieu", value: "Paris 13e" },
-    { icon: Users, label: "Effectif", value: "8 élèves max" },
-    { icon: Euro, label: "Tarif", value: "175 € (25 €/séance)" },
+    { icon: MapPin, label: "Lieu", value: location },
+    { icon: Users, label: "Effectif", value: `${maxStudents} élèves max` },
+    { icon: Euro, label: "Tarif", value: priceDisplay },
   ];
   return (
     <section className="mx-auto max-w-5xl px-5 sm:px-8 -mt-10">
@@ -85,9 +93,11 @@ export function PracticalInfo({
 export function ProgramGrid({
   tone,
   sessions,
+  subtitle = "7 séances pour explorer, ressentir et incarner.",
 }: {
   tone: Tone;
   sessions: { title: string; description: string }[];
+  subtitle?: string;
 }) {
   const toneNum =
     tone === "sky"
@@ -97,7 +107,7 @@ export function ProgramGrid({
   return (
     <section className="mx-auto max-w-5xl px-5 sm:px-8 py-16 lg:py-20">
       <h2 className="font-display text-3xl sm:text-4xl text-primary mb-3">Programme</h2>
-      <p className="text-muted-foreground mb-10">7 séances pour explorer, ressentir et incarner.</p>
+      <p className="text-muted-foreground mb-10">{subtitle}</p>
 
       <div className="grid gap-5 sm:grid-cols-2">
         {sessions.map((s, i) => (
