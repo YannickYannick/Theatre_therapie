@@ -26,7 +26,9 @@ Les variables **`VITE_*`** (ex. `VITE_API_URL`, `VITE_SUPABASE_*`) servent au **
 | `DJANGO_SECRET_KEY` | oui | Clé secrète longue et aléatoire |
 | `DATABASE_URL` | oui en prod | Injectée automatiquement si plugin Postgres Railway ; sinon URI Postgres (ex. Supabase) |
 | `PORT` | non | Définie par Railway — ne pas surcharger |
-| `CORS_ALLOWED_ORIGINS` | recommandé | Origines du front, séparées par des virgules. Ex. `https://ton-front.up.railway.app,http://localhost:5173` |
+| `CORS_ALLOWED_ORIGINS` | recommandé | Origines du front, séparées par des virgules. Ex. `https://theatre-therapie.vercel.app,http://localhost:5173` |
+| `FRONTEND_ORIGIN` | optionnel | Une seule URL du front (sans `/` final), ex. `https://theatre-therapie.vercel.app` — fusionnée en prod dans les origines CORS (évite les oublis). |
+| `CORS_ALLOW_VERCEL_REGEX` | optionnel | `true` pour autoriser toutes les origines `https://*.vercel.app` (previews). Défaut : désactivé. |
 | `CSRF_TRUSTED_ORIGINS` | recommandé | URLs HTTPS du **backend** (admin, POST). Ex. `https://ton-api.up.railway.app` |
 | `ALLOWED_HOSTS` | optionnel | **Noms d’hôte uniquement**, sans `https://` (ex. `mon-api.up.railway.app`). C’est le **Host des requêtes vers l’API**, pas l’URL du front Vercel. Par défaut en prod : sous-domaines Railway ; ajoute un domaine custom si besoin (liste séparée par virgules). |
 | `CONN_MAX_AGE` | optionnel | Durée de persistance des connexions Postgres (secondes), défaut `60` |

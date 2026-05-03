@@ -22,6 +22,20 @@ ALLOWED_HOSTS = env.list(
 # Origines autorisées pour les POST sécurisés (admin, formulaires) — ex. https://ton-api.up.railway.app
 CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", default=[])
 
+# CORS : le front Vercel doit être listé explicitement. `FRONTEND_ORIGIN` (une seule URL, sans slash
+# final) est fusionnée dans `CORS_ALLOWED_ORIGINS` pour limiter les oublis sur Railway.
+_origins = list(CORS_ALLOWED_ORIGINS)
+_front = env("FRONTEND_ORIGIN", default="", cast=str).strip().rstrip("/")
+if _front and _front not in _origins:
+    _origins.append(_front)
+CORS_ALLOWED_ORIGINS = _origins
+
+# Optionnel : autoriser tout déploiement *.vercel.app (previews). Désactivé par défaut.
+if env.bool("CORS_ALLOW_VERCEL_REGEX", default=False):
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        r"^https://[\w.-]+\.vercel\.app$",
+    ]
+
 # Pool de connexions Postgres (Railway / Supabase)
 _engine = DATABASES["default"].get("ENGINE", "")
 if "sqlite" not in _engine:
