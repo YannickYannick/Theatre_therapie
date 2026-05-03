@@ -47,3 +47,11 @@ Voir `docs/project-structure.md` et le journal BMAD `docs/bmad/01-project_log.md
 
 Configuration du service API, variables et SSH : **`docs/railway.md`**.  
 Dans Railway, définir la racine du service sur le dossier **`backend`**.
+
+## Front sur Vercel + API distante
+
+Si le front est sur **Vercel** (ex. `https://theatre-therapie.vercel.app`) et l’API sur **Railway** (ou autre) :
+
+1. **Vercel** — variable d’environnement **`VITE_API_URL`** = URL **publique HTTPS** de l’API, sans slash final (ex. `https://xxx.up.railway.app`). Puis **redéployer** (Vite injecte cette valeur au build).
+2. **Ne jamais** laisser `http://127.0.0.1:8000` en prod : le navigateur refusera d’appeler ta machine depuis Internet (message type « blocked … loopback » / CORS).
+3. **Django (prod)** — `CORS_ALLOWED_ORIGINS` doit inclure l’origine exacte du front, ex. `https://theatre-therapie.vercel.app` (voir `docs/railway.md`).
