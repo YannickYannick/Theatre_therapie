@@ -23,13 +23,16 @@ python manage.py runserver
 **Frontend** :
 
 ```bash
+cd frontend
 npm install
-cp .env.example .env.local   # optionnel : API URL, Supabase
+cp .env.example .env.local   # optionnel : API URL, Supabase (sur macOS/Linux ; sous Windows : copy)
 npm run dev
 ```
 
 - Application : http://localhost:5173  
 - API santé : http://127.0.0.1:8000/api/health/
+
+Si un dossier `node_modules` orphelin est encore présent **à la racine** du dépôt (hors `frontend/`), tu peux le supprimer à la main : tout le front utilise désormais `frontend/node_modules`.
 
 ## Base de données
 

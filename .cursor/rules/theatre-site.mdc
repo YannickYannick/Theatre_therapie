@@ -13,8 +13,8 @@ alwaysApply: true
 
 ## Arborescence code (ce dépôt)
 
-- **Frontend** : `src/` — React + Vite (`lib/`, `integrations/supabase/`, `components/` au fil des besoins).
+- **Frontend** : `frontend/` — React + Vite (`frontend/src/` : `lib/`, `integrations/supabase/`, `components/`, etc.).
 - **Backend** : `backend/` — Django + DRF, API sous `/api/`, **PostgreSQL Supabase** via `DATABASE_URL`.
-- **Assets** : `public/`.
+- **Assets front** : `frontend/public/`.
 - **Contenu optionnel** : `content/pages/`.
 - **Détail** : `docs/project-structure.md` ; règles Python : `.cursor/rules/theatre-backend.mdc`.

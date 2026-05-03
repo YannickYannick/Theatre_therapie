@@ -12,9 +12,9 @@ Ce dépôt est configuré pour **Cursor** et **BMAD Method** (module BMM).
 
 | Élément | Rôle |
 |--------|------|
-| `src/` | Frontend Vite + React (appels API Django, client Supabase) — voir `docs/project-structure.md` |
+| `frontend/` | Frontend Vite + React (`frontend/src/`, appels API Django, client Supabase) — voir `docs/project-structure.md` |
 | `backend/` | Django + DRF, migrations sur Postgres Supabase (`DATABASE_URL`) |
-| `public/` | Images, polices |
+| `frontend/public/` | Assets statiques du front (images, favicon) |
 | `content/` | Textes / contenus optionnels hors code |
 | `_bmad/` | Configuration et cœur BMAD |
 | `_bmad-output/` | Artefacts générés (plans, sprints, etc.) |
