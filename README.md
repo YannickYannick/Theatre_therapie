@@ -50,8 +50,10 @@ Dans Railway, définir la racine du service sur le dossier **`backend`**.
 
 ## Front sur Vercel + API distante
 
-Si le front est sur **Vercel** (ex. `https://theatre-therapie.vercel.app`) et l’API sur **Railway** (ou autre) :
+Guide pas à pas (variables Railway vs Vercel, `ALLOWED_HOSTS`, erreurs loopback) : **`docs/deploiement-vercel-railway.md`**.
 
-1. **Vercel** — variable d’environnement **`VITE_API_URL`** = URL **publique HTTPS** de l’API, sans slash final (ex. `https://xxx.up.railway.app`). Puis **redéployer** (Vite injecte cette valeur au build).
-2. **Ne jamais** laisser `http://127.0.0.1:8000` en prod : le navigateur refusera d’appeler ta machine depuis Internet (message type « blocked … loopback » / CORS).
-3. **Django (prod)** — `CORS_ALLOWED_ORIGINS` doit inclure l’origine exacte du front, ex. `https://theatre-therapie.vercel.app` (voir `docs/railway.md`).
+En résumé :
+
+1. **`VITE_API_URL`** se configure sur **Vercel** (build du front), avec l’URL HTTPS **publique** de l’API Railway — puis **redéployer** le front.
+2. Ne pas utiliser **`http://127.0.0.1:8000`** pour un site en ligne (blocage loopback / PNA).
+3. Sur **Railway (Django)** : `CORS_ALLOWED_ORIGINS` inclut `https://theatre-therapie.vercel.app` ; **`ALLOWED_HOSTS`** = host(s) de **l’API**, pas du front (voir le guide).

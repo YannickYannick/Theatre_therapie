@@ -8,6 +8,10 @@
 | Environnement | `fd7f19c6-3f95-4366-95b7-6a712e29c877` |
 | Service (API) | `b9a5660a-93a7-491d-a7d7-47abcada28a9` |
 
+### À ne pas mettre sur le service Django Railway
+
+Les variables **`VITE_*`** (ex. `VITE_API_URL`, `VITE_SUPABASE_*`) servent au **build Vite sur Vercel** (ou autre CI front). Elles ne sont **pas** lues par Gunicorn/Django sur ce dépôt. Les avoir sur Railway ne corrige pas le front Vercel : voir **`docs/deploiement-vercel-railway.md`**.
+
 ### Réglages dans Railway (dashboard)
 
 1. **Root Directory** : `backend` (racine du code Python / `manage.py`).
@@ -24,7 +28,7 @@
 | `PORT` | non | Définie par Railway — ne pas surcharger |
 | `CORS_ALLOWED_ORIGINS` | recommandé | Origines du front, séparées par des virgules. Ex. `https://ton-front.up.railway.app,http://localhost:5173` |
 | `CSRF_TRUSTED_ORIGINS` | recommandé | URLs HTTPS du **backend** (admin, POST). Ex. `https://ton-api.up.railway.app` |
-| `ALLOWED_HOSTS` | optionnel | Par défaut le code accepte `.up.railway.app` ; ajoute ton domaine custom si besoin (liste séparée par virgules) |
+| `ALLOWED_HOSTS` | optionnel | **Noms d’hôte uniquement**, sans `https://` (ex. `mon-api.up.railway.app`). C’est le **Host des requêtes vers l’API**, pas l’URL du front Vercel. Par défaut en prod : sous-domaines Railway ; ajoute un domaine custom si besoin (liste séparée par virgules). |
 | `CONN_MAX_AGE` | optionnel | Durée de persistance des connexions Postgres (secondes), défaut `60` |
 | `DATABASE_SSL_REQUIRE` | optionnel | défaut `false`. Mets `true` pour forcer `sslmode=require` (ex. Postgres Supabase si l’URL n’inclut pas sslmode). |
 | `DJANGO_SECURE_SSL_REDIRECT` | optionnel | `true` pour forcer les redirections HTTPS Django (souvent inutile derrière Railway) |
