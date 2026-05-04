@@ -3,10 +3,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { CheckCircle2, Send } from "lucide-react";
-import { toast } from "sonner";
 
 import { BilletterieAtelierButtons } from "@/components/BilletterieAtelierButtons";
-import { getSupabase, isSupabaseConfigured } from "@/integrations/supabase/client";
 
 const schema = z.object({
   prenom: z.string().trim().min(1, "Prénom requis").max(80),
@@ -29,13 +27,35 @@ type FormValues = z.output<typeof schema>;
 const inputClass =
   "w-full rounded-xl border border-input bg-background px-3 py-2.5 text-sm text-foreground shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring h-11";
 
+const ATELIER_LABEL: Record<"emotions" | "impro", string> = {
+  emotions: "Émotions encore et toujours",
+  impro: "Et... IMPRO",
+};
+
+function buildInscriptionMailto(values: FormValues): string {
+  const sujet = encodeURIComponent(
+    `[Théâtre Thérapie] Demande : ${ATELIER_LABEL[values.atelier]}`,
+  );
+  const lignes = [
+    `Prénom : ${values.prenom}`,
+    `Nom : ${values.nom}`,
+    `Email : ${values.email}`,
+    `Téléphone : ${values.telephone}`,
+    `Atelier : ${ATELIER_LABEL[values.atelier]}`,
+    "",
+    values.message?.trim() ? values.message.trim() : "(Pas de message complémentaire)",
+  ];
+  const corps = encodeURIComponent(lignes.join("\n"));
+  return `mailto:yannbaff@gmail.com?subject=${sujet}&body=${corps}`;
+}
+
 export function InscriptionPage() {
   const [submitted, setSubmitted] = useState(false);
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<FormInput, unknown, FormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -56,31 +76,13 @@ export function InscriptionPage() {
     if (el) el.setAttribute("content", desc);
   }, []);
 
-  const onSubmit = async (values: FormValues) => {
-    if (!isSupabaseConfigured()) {
-      toast.error(
-        "Envoi en ligne indisponible : configurez VITE_SUPABASE_URL et VITE_SUPABASE_PUBLISHABLE_KEY, ou écrivez à yannbaff@gmail.com.",
-      );
-      return;
-    }
-
-    const { error } = await getSupabase().from("inscriptions").insert({
-      prenom: values.prenom,
-      nom: values.nom,
-      email: values.email,
-      telephone: values.telephone,
-      atelier: values.atelier,
-      message: values.message?.trim() ? values.message.trim() : null,
-    });
-
-    if (error) {
-      toast.error("Une erreur est survenue. Merci de réessayer.");
-      return;
-    }
-
-    toast.success("Inscription envoyée. Nous vous recontacterons bientôt.");
+  const onSubmit = (values: FormValues) => {
+    const url = buildInscriptionMailto(values);
     setSubmitted(true);
     reset();
+    setTimeout(() => {
+      window.location.href = url;
+    }, 0);
   };
 
   return (
@@ -110,9 +112,14 @@ export function InscriptionPage() {
           <div className="mx-auto h-14 w-14 rounded-full bg-[color:var(--mint-soft)]/40 flex items-center justify-center text-primary">
             <CheckCircle2 className="h-7 w-7" />
           </div>
-          <h2 className="mt-5 font-display text-2xl text-foreground">Merci !</h2>
+          <h2 className="mt-5 font-display text-2xl text-foreground">Presque fini</h2>
           <p className="mt-3 text-foreground/75">
-            Votre demande d&apos;inscription a bien été envoyée. Vous recevrez bientôt une réponse.
+            Votre messagerie devrait s&apos;ouvrir avec un message déjà rédigé. Envoyez-le pour nous
+            transmettre votre demande. Sinon, écrivez à{" "}
+            <a href="mailto:yannbaff@gmail.com" className="font-semibold text-primary hover:underline">
+              yannbaff@gmail.com
+            </a>
+            .
           </p>
           <button
             type="button"
@@ -177,21 +184,15 @@ export function InscriptionPage() {
 
           <button
             type="submit"
-            disabled={isSubmitting}
-            className="w-full rounded-full h-12 text-base font-semibold bg-primary text-primary-foreground hover:opacity-90 transition disabled:opacity-60 inline-flex items-center justify-center gap-2"
+            className="w-full rounded-full h-12 text-base font-semibold bg-primary text-primary-foreground hover:opacity-90 transition inline-flex items-center justify-center gap-2"
           >
-            {isSubmitting ? (
-              "Envoi…"
-            ) : (
-              <>
-                Envoyer la demande
-                <Send className="h-4 w-4" />
-              </>
-            )}
+            Ouvrir ma messagerie
+            <Send className="h-4 w-4" />
           </button>
 
           <p className="text-xs text-muted-foreground text-center pt-2">
-            Vos informations restent confidentielles et ne servent qu'à gérer votre inscription.
+            Un message prérempli s&apos;ouvre dans votre application mail (vers yannbaff@gmail.com). Les
+            champs servent uniquement à rédiger ce message.
           </p>
         </form>
       )}

@@ -102,7 +102,7 @@ export function BiographiePage() {
               <img
                 src="/images/yannick.png"
                 alt="Portrait de Yannick, formateur en prise de parole et cofondateur de Théâtre Thérapie"
-                className="h-full w-full object-cover object-center"
+                className="h-full w-full object-cover object-top"
               />
             </div>
           </div>

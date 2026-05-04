@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Mail, Sparkles, Users } from "lucide-react";
+import { ArrowRight, Sparkles, Users } from "lucide-react";
 
 import { AgeDorMapCard } from "@/components/AgeDorMapCard";
 import { BilletterieAtelierButtons } from "@/components/BilletterieAtelierButtons";
@@ -125,7 +125,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 sm:px-8 pb-20">
+      <section className="mx-auto max-w-6xl px-5 sm:px-8 pb-24">
         <h2 className="font-display text-3xl sm:text-4xl text-primary mb-8">En images</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
           {galleryImages.map((src, i) => (
@@ -141,22 +141,6 @@ export function HomePage() {
               />
             </div>
           ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-5 sm:px-8 pb-24">
-        <div className="rounded-[2rem] bg-gradient-to-br from-[color:var(--sky-soft)]/30 to-[color:var(--mint-soft)]/30 border border-border/60 px-6 py-12 sm:px-12 sm:py-16 text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary/80">
-            Une question ?
-          </p>
-          <h2 className="mt-3 font-display text-3xl sm:text-4xl text-foreground">Écrivez-nous</h2>
-          <a
-            href="mailto:yannbaff@gmail.com"
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 text-sm sm:text-base font-semibold hover:opacity-90 transition"
-          >
-            <Mail className="h-4 w-4" />
-            yannbaff@gmail.com
-          </a>
         </div>
       </section>
     </div>
