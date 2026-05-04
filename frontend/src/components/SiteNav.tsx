@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 
 const links = [
   { to: "/", label: "Accueil", end: true },
-  { to: "/biographie", label: "Biographie", end: false },
+  { to: "/biographie", label: "Biographie & équipe", end: false },
   { to: "/emotions", label: "Émotions encore et toujours", end: false },
   { to: "/impro", label: "Et... IMPRO", end: false },
   { to: "/inscription", label: "Inscription", end: false },

@@ -2,6 +2,12 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Calendar, Clock, MapPin, Users, Euro } from "lucide-react";
 import type { ReactNode } from "react";
 
+import {
+  BilletterieAtelierButtons,
+  BilletterieImproFootnote,
+  type AtelierSlug,
+} from "@/components/BilletterieAtelierButtons";
+
 export type Tone = "sky" | "mint";
 
 export function WorkshopHero({
@@ -47,7 +53,7 @@ export function WorkshopHero({
 export function PracticalInfo({
   schedule,
   dates,
-  location = "Paris 13e",
+  location = "L'Âge d'or — 26 rue du Dr Magnan, 75013 Paris",
   maxStudents = 8,
   priceDisplay = "175 € (25 €/séance)",
   sessionsLabel = "7 séances",
@@ -133,19 +139,24 @@ export function ProgramGrid({
   );
 }
 
-export function WorkshopCTA() {
+export function WorkshopCTA({ currentSlug }: { currentSlug?: AtelierSlug }) {
   return (
     <section className="mx-auto max-w-5xl px-5 sm:px-8 pb-20">
       <div className="rounded-[2rem] bg-[color:var(--cream-deep)] border border-border/60 p-8 sm:p-10 text-center">
         <h2 className="font-display text-2xl sm:text-3xl text-primary">Envie de participer ?</h2>
         <p className="mt-3 text-foreground/75 max-w-xl mx-auto">
-          8 places seulement. Réservez la vôtre dès maintenant en quelques secondes.
+          8 places par atelier. Choisissez la billetterie correspondante — les liens s&apos;ouvrent
+          dans un nouvel onglet.
         </p>
+        <BilletterieImproFootnote className="mt-4 mx-auto" />
+        <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
+          <BilletterieAtelierButtons currentSlug={currentSlug} />
+        </div>
         <Link
           to="/inscription"
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 text-sm font-semibold hover:opacity-90 transition"
+          className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
         >
-          S'inscrire à un atelier
+          Préférez envoyer un message ou une question
           <ArrowRight className="h-4 w-4" />
         </Link>
       </div>

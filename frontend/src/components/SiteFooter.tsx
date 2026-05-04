@@ -40,12 +40,12 @@ export function SiteFooter() {
           <div>
             <div className="font-semibold text-foreground">Suivre</div>
             <a
-              href="https://instagram.com/theatretherapie"
+              href="https://www.instagram.com/theatre_therapie/"
               target="_blank"
               rel="noreferrer"
               className="text-muted-foreground hover:text-primary transition"
             >
-              @theatretherapie
+              @theatre_therapie
             </a>
           </div>
         </div>
@@ -53,7 +53,11 @@ export function SiteFooter() {
           <MapPin className="h-4 w-4 mt-0.5 text-primary shrink-0" />
           <div>
             <div className="font-semibold text-foreground">Trouver</div>
-            <div className="text-muted-foreground">Paris 13e</div>
+            <address className="text-muted-foreground not-italic space-y-0.5">
+              <span className="block text-foreground/90">L&apos;Âge d&apos;or</span>
+              <span className="block">26 rue du Dr Magnan</span>
+              <span className="block">75013 Paris</span>
+            </address>
           </div>
         </div>
       </div>

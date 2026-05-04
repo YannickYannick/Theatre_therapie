@@ -5,6 +5,7 @@ import { z } from "zod";
 import { CheckCircle2, Send } from "lucide-react";
 import { toast } from "sonner";
 
+import { BilletterieAtelierButtons, BilletterieImproFootnote } from "@/components/BilletterieAtelierButtons";
 import { getSupabase, isSupabaseConfigured } from "@/integrations/supabase/client";
 
 const schema = z.object({
@@ -50,7 +51,7 @@ export function InscriptionPage() {
   useEffect(() => {
     document.title = "Inscription — Théâtre Thérapie · Paris";
     const desc =
-      "Inscrivez-vous à un atelier Théâtre Thérapie à Paris 13e : Émotions encore et toujours ou Et... IMPRO.";
+      "Inscrivez-vous à un atelier Théâtre Thérapie à l'Âge d'or (Paris 13e) : Émotions encore et toujours ou Et... IMPRO.";
     const el = document.querySelector('meta[name="description"]');
     if (el) el.setAttribute("content", desc);
   }, []);
@@ -92,10 +93,18 @@ export function InscriptionPage() {
           Réservez votre place
         </h1>
         <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-          Remplissez ce formulaire — Kenza vous recontactera personnellement pour confirmer votre
-          inscription.
+          Réservez d&apos;abord via la billetterie lorsqu&apos;elle est disponible, ou écrivez à Kenza avec le
+          formulaire ci-dessous.
         </p>
       </header>
+
+      <div className="mb-10 rounded-[2rem] bg-[color:var(--cream-deep)] border border-border/60 p-6 sm:p-8 text-center">
+        <h2 className="font-display text-xl sm:text-2xl text-primary">Billetterie</h2>
+        <BilletterieImproFootnote className="mt-3 mx-auto" />
+        <div className="mt-6 flex justify-center">
+          <BilletterieAtelierButtons className="justify-center" />
+        </div>
+      </div>
 
       {submitted ? (
         <div className="rounded-[2rem] bg-card border border-border/60 shadow-sm p-8 sm:p-10 text-center">
@@ -119,7 +128,11 @@ export function InscriptionPage() {
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="rounded-[2rem] bg-card border border-border/60 shadow-sm p-6 sm:p-10 space-y-5"
+          aria-label="Formulaire de contact pour une question ou une demande"
         >
+          <p className="text-sm font-semibold text-foreground text-center -mt-1 pb-1">
+            Message à Kenza (hors billetterie ou complément)
+          </p>
           <div className="grid gap-5 sm:grid-cols-2">
             <Field label="Prénom" error={errors.prenom?.message}>
               <input {...register("prenom")} placeholder="Camille" className={inputClass} />
@@ -173,7 +186,7 @@ export function InscriptionPage() {
               "Envoi…"
             ) : (
               <>
-                S'inscrire
+                Envoyer la demande
                 <Send className="h-4 w-4" />
               </>
             )}

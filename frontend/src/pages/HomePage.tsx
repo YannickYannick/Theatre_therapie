@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Mail, Sparkles, Users } from "lucide-react";
 
-import { fetchWorkshops, type WorkshopListItem, type WorkshopTone } from "@/lib/api";
+import { BilletterieAtelierButtons, BilletterieImproFootnote } from "@/components/BilletterieAtelierButtons";
+import type { WorkshopTone } from "@/lib/workshopPresets";
+import { WORKSHOP_LIST } from "@/lib/workshopPresets";
 
 function isTone(v: string): v is WorkshopTone {
   return v === "sky" || v === "mint";
@@ -18,26 +20,10 @@ const galleryImages = [
 ];
 
 export function HomePage() {
-  const [workshops, setWorkshops] = useState<WorkshopListItem[] | null>(null);
-
-  useEffect(() => {
-    let cancelled = false;
-    fetchWorkshops()
-      .then((list) => {
-        if (!cancelled) setWorkshops(list);
-      })
-      .catch(() => {
-        if (!cancelled) setWorkshops([]);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
   useEffect(() => {
     document.title = "Théâtre Thérapie — Ateliers de théâtre à Paris";
     const desc =
-      "Cours et ateliers de théâtre à Paris fondés par Kenza El Ghadouini. Émotions, improvisation, présence au plateau.";
+      "Cours et ateliers de théâtre à Paris : Kenza El Ghadouini et Yannick Bafanga. Émotions, improvisation, prise de parole.";
     let el = document.querySelector('meta[name="description"]');
     if (!el) {
       el = document.createElement("meta");
@@ -62,26 +48,25 @@ export function HomePage() {
               Thérapie
             </h1>
             <p className="mt-5 text-lg sm:text-xl text-muted-foreground max-w-xl">
-              Comédienne & professeure de théâtre · Paris
+              Kenza El Ghadouini &amp; Yannick Bafanga · Paris
             </p>
             <p className="mt-6 text-base text-foreground/80 max-w-xl leading-relaxed">
-              Des ateliers pensés pour libérer la parole, le corps et l'authenticité de chacun. Une
-              pédagogie ancrée dans les émotions, la confiance et la présence au plateau.
+              Des ateliers pensés pour libérer la parole, le corps et l&apos;authenticité de chacun —
+              entre jeu théâtral, improvisation et accompagnement à la prise de parole. Une pédagogie
+              ancrée dans les émotions, la confiance et la présence au plateau.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                to="/inscription"
-                className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 text-sm font-semibold hover:opacity-90 transition shadow-sm"
-              >
-                S'inscrire
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+            <div className="mt-8 space-y-4">
+              <div>
+                <BilletterieAtelierButtons />
+                <BilletterieImproFootnote className="mt-3" />
+              </div>
               <Link
                 to="/biographie"
                 className="inline-flex items-center gap-2 rounded-full border border-border bg-card text-foreground px-6 py-3 text-sm font-semibold hover:bg-secondary transition"
               >
                 Découvrir Kenza
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
@@ -90,9 +75,9 @@ export function HomePage() {
             <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-br from-[color:var(--sky-soft)]/40 via-transparent to-[color:var(--mint-soft)]/40 blur-2xl" />
             <div className="aspect-[4/5] overflow-hidden rounded-[2rem] border border-border/60 bg-cream-deep shadow-lg">
               <img
-                src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=900&q=80"
-                alt="Portrait de Kenza El Ghadouini"
-                className="h-full w-full object-cover"
+                src="/images/hero-accueil-profs-theatre.png"
+                alt="Illustration : Kenza El Ghadouini et un collaborateur, professeurs de théâtre"
+                className="h-full w-full object-cover object-top"
               />
             </div>
             <div className="absolute -bottom-4 -left-4 hidden sm:flex items-center gap-2 rounded-full bg-card border border-border px-4 py-2 text-sm shadow-md">
@@ -107,20 +92,12 @@ export function HomePage() {
         <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
           <h2 className="font-display text-3xl sm:text-4xl text-primary">Les ateliers</h2>
           <p className="text-sm text-muted-foreground max-w-md">
-            Deux ateliers complémentaires, 7 séances chacun, à Paris 13e.
+            Deux ateliers complémentaires, 7 séances chacun, à l&apos;Âge d&apos;or (Paris 13e).
           </p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
-          {workshops === null && (
-            <p className="text-sm text-muted-foreground col-span-full">Chargement des ateliers…</p>
-          )}
-          {workshops && workshops.length === 0 && (
-            <p className="text-sm text-muted-foreground col-span-full">
-              Ateliers indisponibles pour le moment (API hors ligne ou aucun atelier publié).
-            </p>
-          )}
-          {workshops?.map((w) => (
+          {WORKSHOP_LIST.map((w) => (
             <WorkshopCard
               key={w.slug}
               to={`/${w.slug}`}

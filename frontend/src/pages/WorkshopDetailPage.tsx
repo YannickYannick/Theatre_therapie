@@ -1,38 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { Sparkles } from "lucide-react";
 
+import { PresentationAudio } from "@/components/PresentationAudio";
+import type { AtelierSlug } from "@/components/BilletterieAtelierButtons";
 import {
   WorkshopHero,
   PracticalInfo,
   ProgramGrid,
   WorkshopCTA,
 } from "@/components/workshop";
-import { fetchWorkshopBySlug, type WorkshopDetail, type WorkshopTone } from "@/lib/api";
+import { getWorkshopDetail, type WorkshopTone } from "@/lib/workshopPresets";
 
 function isTone(v: string): v is WorkshopTone {
   return v === "sky" || v === "mint";
 }
 
 export function WorkshopDetailPage({ slug }: { slug: string }) {
-  const [data, setData] = useState<WorkshopDetail | null>(null);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    let cancelled = false;
-    setError(null);
-    setData(null);
-    fetchWorkshopBySlug(slug)
-      .then((w) => {
-        if (!cancelled) setData(w);
-      })
-      .catch(() => {
-        if (!cancelled) setError("Impossible de charger cet atelier. Vérifiez que l’API tourne.");
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, [slug]);
+  const data = useMemo(() => getWorkshopDetail(slug), [slug]);
 
   useEffect(() => {
     if (!data) return;
@@ -43,21 +28,13 @@ export function WorkshopDetailPage({ slug }: { slug: string }) {
     }
   }, [data]);
 
-  if (error) {
+  if (!data) {
     return (
       <div className="mx-auto max-w-lg px-5 py-20 text-center">
-        <p className="text-foreground/80">{error}</p>
+        <p className="text-foreground/80">Cet atelier n’existe pas ou n’est plus proposé.</p>
         <Link to="/" className="mt-4 inline-block text-primary font-semibold hover:underline">
           Retour à l’accueil
         </Link>
-      </div>
-    );
-  }
-
-  if (!data) {
-    return (
-      <div className="mx-auto max-w-5xl px-5 py-24 text-center text-muted-foreground">
-        Chargement de l’atelier…
       </div>
     );
   }
@@ -94,10 +71,23 @@ export function WorkshopDetailPage({ slug }: { slug: string }) {
         maxStudents={data.max_students}
         priceDisplay={data.price_display}
         sessionsLabel={data.sessions_label}
-        extra={highlight}
+        extra={
+          <>
+            {slug === "emotions" && (
+              <PresentationAudio
+                src="/audio/emotions-presentation.mp4"
+                title="Présentation vocale"
+                description="Court message audio sur cet atelier."
+              />
+            )}
+            {highlight}
+          </>
+        }
       />
       <ProgramGrid tone={tone} sessions={sessions} subtitle={data.program_subtitle_resolved} />
-      <WorkshopCTA />
+      <WorkshopCTA
+        currentSlug={slug === "emotions" || slug === "impro" ? (slug as AtelierSlug) : undefined}
+      />
     </>
   );
 }

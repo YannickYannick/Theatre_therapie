@@ -19,7 +19,11 @@ class Workshop(models.Model):
 
     schedule_time = models.CharField("horaires affichés", max_length=80)
     dates_text = models.CharField("dates des séances", max_length=200)
-    location = models.CharField("lieu", max_length=120, default="Paris 13e")
+    location = models.CharField(
+        "lieu",
+        max_length=120,
+        default="L'Âge d'or — 26 rue du Dr Magnan, 75013 Paris",
+    )
     max_students = models.PositiveSmallIntegerField("places max", default=8)
     sessions_count = models.PositiveSmallIntegerField("nombre de séances", default=7)
     price_display = models.CharField("tarif affiché", max_length=120, default="175 € (25 €/séance)")

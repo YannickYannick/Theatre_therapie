@@ -4,9 +4,9 @@ import { ArrowRight } from "lucide-react";
 
 export function BiographiePage() {
   useEffect(() => {
-    document.title = "Biographie — Kenza El Ghadouini · Théâtre Thérapie";
+    document.title = "Biographie & équipe — Théâtre Thérapie · Paris";
     const desc =
-      "Comédienne et professeure de théâtre formée au Cours Florent et au Cours Clément, Kenza El Ghadouini cofonde Théâtre Thérapie à Paris.";
+      "Kenza El Ghadouini et Yannick Bafanga cofondent Théâtre Thérapie à Paris : ateliers de théâtre, improvisation, et accompagnement à la prise de parole.";
     const el = document.querySelector('meta[name="description"]');
     if (el) el.setAttribute("content", desc);
   }, []);
@@ -15,13 +15,13 @@ export function BiographiePage() {
     <article className="mx-auto max-w-4xl px-5 sm:px-8 pt-14 pb-20 lg:pt-20">
       <header className="mb-12">
         <span className="inline-flex items-center gap-2 rounded-full bg-[color:var(--sky-soft)]/40 text-[color:var(--sky-soft-foreground)] px-3 py-1 text-xs font-semibold">
-          Biographie
+          Biographie &amp; équipe
         </span>
         <h1 className="mt-5 font-display text-4xl sm:text-5xl lg:text-6xl text-primary leading-tight">
-          Kenza El Ghadouini
+          L&apos;équipe
         </h1>
         <p className="mt-4 text-lg text-muted-foreground">
-          Comédienne, professeure de théâtre, cofondatrice de Théâtre Thérapie.
+          Kenza El Ghadouini &amp; Yannick Bafanga — Théâtre Thérapie, Paris.
         </p>
       </header>
 
@@ -29,7 +29,7 @@ export function BiographiePage() {
         <div>
           <div className="aspect-[4/5] overflow-hidden rounded-[2rem] border border-border/60 bg-cream-deep shadow-md lg:sticky lg:top-24">
             <img
-              src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=900&q=80"
+              src="/images/kenza-el-ghadouini.png"
               alt="Portrait de Kenza El Ghadouini"
               className="h-full w-full object-cover"
             />
@@ -37,6 +37,7 @@ export function BiographiePage() {
         </div>
 
         <div className="space-y-6 text-foreground/85 leading-relaxed text-[1.05rem]">
+          <h2 className="font-display text-2xl sm:text-3xl text-primary">Kenza El Ghadouini</h2>
           <p>
             Kenza El Ghadouini est comédienne et professeure de théâtre. Formée au{" "}
             <strong className="text-foreground">Cours Florent</strong> puis au{" "}
@@ -90,6 +91,48 @@ export function BiographiePage() {
           </div>
         </div>
       </div>
+
+      <section
+        className="mt-16 lg:mt-24 pt-12 border-t border-border/60"
+        aria-labelledby="yannick-bafanga"
+      >
+        <h2
+          id="yannick-bafanga"
+          className="font-display text-3xl sm:text-4xl text-primary mb-6"
+        >
+          Yannick Bafanga
+        </h2>
+        <div className="max-w-3xl space-y-5 text-foreground/85 leading-relaxed text-[1.05rem]">
+          <p>
+            <strong className="text-foreground">Coach en prise de parole et développement personnel</strong>,
+            Yannick accompagne depuis une dizaine d&apos;années des professionnels et des particuliers à{" "}
+            <strong className="text-foreground">trouver leur voix</strong>. Son approche, à la fois{" "}
+            <strong className="text-foreground">directe et bienveillante</strong>, aide chacun à
+            dépasser ses blocages et à <strong className="text-foreground">oser prendre sa place</strong>{" "}
+            — devant un public, en réunion ou dans les moments où l&apos;on sent que les mots comptent.
+          </p>
+          <p>
+            Issu du <strong className="text-foreground">milieu sportif et du collectif</strong>, il
+            intervient aussi comme <strong className="text-foreground">coach auprès d&apos;équipes</strong>{" "}
+            — dont des <strong className="text-foreground">équipes de rugby</strong> et d&apos;autres
+            groupes qui veulent renforcer la parole de vestiaire, la cohésion et le soutien mutuel sous
+            pression. Autant de situations où l&apos;on apprend vite que le jeu ne tient pas qu&apos;aux
+            gestes : il tient au regard, au rythme et à la confiance qu&apos;on se donne les uns les
+            autres.
+          </p>
+          <p>
+            <strong className="text-foreground">Trois années de pratique théâtrale</strong> viennent
+            compléter son parcours : il connaît le vocabulaire du plateau, du timing et du risque, et le
+            met au service d&apos;ateliers où chacun peut explorer, sans jugement, ce qu&apos;il a à dire.
+            Ingénieur de formation et habitué aux <strong className="text-foreground">projets d&apos;équipe</strong>{" "}
+            exigeants, il transpose au théâtre la même exigence d&apos;écoute et de clarté collective.
+          </p>
+          <p className="text-muted-foreground text-sm">
+            Avec Kenza, il cofonde <strong className="text-foreground/90">Théâtre Thérapie</strong> pour
+            proposer une pédagogie où le corps, la parole et le plaisir du jeu vont ensemble.
+          </p>
+        </div>
+      </section>
     </article>
   );
 }
