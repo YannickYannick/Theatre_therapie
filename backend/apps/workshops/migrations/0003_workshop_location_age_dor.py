@@ -2,7 +2,7 @@
 
 from django.db import migrations, models
 
-NEW_LOCATION = "L'Âge d'or — 26 rue du Dr Magnan, 75013 Paris"
+NEW_LOCATION = "L'Âge d'or, 26 rue du Dr Magnan, 75013 Paris"
 
 
 def forwards(apps, schema_editor):

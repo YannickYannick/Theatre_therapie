@@ -49,7 +49,7 @@ export function InscriptionPage() {
   });
 
   useEffect(() => {
-    document.title = "Inscription — Théâtre Thérapie · Paris";
+    document.title = "Inscription · Théâtre Thérapie · Paris";
     const desc =
       "Inscrivez-vous à un atelier Théâtre Thérapie à l'Âge d'or (Paris 13e) : Émotions encore et toujours ou Et... IMPRO.";
     const el = document.querySelector('meta[name="description"]');
@@ -59,7 +59,7 @@ export function InscriptionPage() {
   const onSubmit = async (values: FormValues) => {
     if (!isSupabaseConfigured()) {
       toast.error(
-        "Envoi en ligne indisponible : configurez VITE_SUPABASE_URL et VITE_SUPABASE_PUBLISHABLE_KEY, ou écrivez à kenza.elghadouini@gmail.com.",
+        "Envoi en ligne indisponible : configurez VITE_SUPABASE_URL et VITE_SUPABASE_PUBLISHABLE_KEY, ou écrivez à yannbaff@gmail.com.",
       );
       return;
     }
@@ -78,7 +78,7 @@ export function InscriptionPage() {
       return;
     }
 
-    toast.success("Inscription envoyée — Kenza vous recontactera bientôt.");
+    toast.success("Inscription envoyée. Nous vous recontacterons bientôt.");
     setSubmitted(true);
     reset();
   };
@@ -93,7 +93,7 @@ export function InscriptionPage() {
           Réservez votre place
         </h1>
         <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-          Réservez d&apos;abord via la billetterie lorsqu&apos;elle est disponible, ou écrivez à Kenza avec le
+          Réservez d&apos;abord via la billetterie lorsqu&apos;elle est disponible, ou envoyez un message avec le
           formulaire ci-dessous.
         </p>
       </header>
@@ -113,8 +113,7 @@ export function InscriptionPage() {
           </div>
           <h2 className="mt-5 font-display text-2xl text-foreground">Merci !</h2>
           <p className="mt-3 text-foreground/75">
-            Votre demande d'inscription a bien été envoyée. Vous recevrez bientôt une réponse de
-            Kenza.
+            Votre demande d&apos;inscription a bien été envoyée. Vous recevrez bientôt une réponse.
           </p>
           <button
             type="button"
@@ -131,7 +130,7 @@ export function InscriptionPage() {
           aria-label="Formulaire de contact pour une question ou une demande"
         >
           <p className="text-sm font-semibold text-foreground text-center -mt-1 pb-1">
-            Message à Kenza (hors billetterie ou complément)
+            Message à l&apos;équipe (hors billetterie ou complément)
           </p>
           <div className="grid gap-5 sm:grid-cols-2">
             <Field label="Prénom" error={errors.prenom?.message}>

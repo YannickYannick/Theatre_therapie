@@ -10,20 +10,30 @@ function isTone(v: string): v is WorkshopTone {
   return v === "sky" || v === "mint";
 }
 
+/** Galerie « En images » : fichiers dans `public/images/gallery/`. */
 const galleryImages = [
-  "https://images.unsplash.com/photo-1503095396549-807759245b35?w=800&q=80",
-  "https://images.unsplash.com/photo-1507924538820-ede94a04019d?w=800&q=80",
-  "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=800&q=80",
-  "https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?w=800&q=80",
-  "https://images.unsplash.com/photo-1514306191717-452ec28c7814?w=800&q=80",
-  "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80",
+  "/images/gallery/accueil-galerie-01.jpeg",
+  "/images/gallery/accueil-galerie-02.jpeg",
+  "/images/gallery/accueil-galerie-03.jpeg",
+  "/images/gallery/accueil-galerie-04.jpeg",
+  "/images/gallery/accueil-galerie-05.jpeg",
+  "/images/gallery/accueil-galerie-06.jpeg",
+] as const;
+
+const galleryAlts: readonly string[] = [
+  "Atelier Théâtre Thérapie à Paris, vue 1",
+  "Atelier Théâtre Thérapie à Paris, vue 2",
+  "Atelier Théâtre Thérapie à Paris, vue 3",
+  "Atelier Théâtre Thérapie à Paris, vue 4",
+  "Atelier Théâtre Thérapie à Paris, vue 5",
+  "Atelier Théâtre Thérapie à Paris, vue 6",
 ];
 
 export function HomePage() {
   useEffect(() => {
-    document.title = "Théâtre Thérapie — Ateliers de théâtre à Paris";
+    document.title = "Théâtre Thérapie · Ateliers de théâtre à Paris";
     const desc =
-      "Cours et ateliers de théâtre à Paris : Kenza El Ghadouini et Yannick Bafanga. Émotions, improvisation, prise de parole.";
+      "Cours et ateliers de théâtre à Paris : Kenza et Yannick. Émotions, improvisation, prise de parole.";
     let el = document.querySelector('meta[name="description"]');
     if (!el) {
       el = document.createElement("meta");
@@ -48,10 +58,10 @@ export function HomePage() {
               Thérapie
             </h1>
             <p className="mt-5 text-lg sm:text-xl text-muted-foreground max-w-xl">
-              Kenza El Ghadouini &amp; Yannick Bafanga · Paris
+              Kenza &amp; Yannick · Paris
             </p>
             <p className="mt-6 text-base text-foreground/80 max-w-xl leading-relaxed">
-              Des ateliers pensés pour libérer la parole, le corps et l&apos;authenticité de chacun —
+              Des ateliers pensés pour libérer la parole, le corps et l&apos;authenticité de chacun,
               entre jeu théâtral, improvisation et accompagnement à la prise de parole. Une pédagogie
               ancrée dans les émotions, la confiance et la présence au plateau.
             </p>
@@ -76,7 +86,7 @@ export function HomePage() {
             <div className="aspect-[4/5] overflow-hidden rounded-[2rem] border border-border/60 bg-cream-deep shadow-lg">
               <img
                 src="/images/hero-accueil-profs-theatre.png"
-                alt="Illustration : Kenza El Ghadouini et un collaborateur, professeurs de théâtre"
+                alt="Illustration : Kenza et un collaborateur, professeurs de théâtre"
                 className="h-full w-full object-cover object-top"
               />
             </div>
@@ -116,12 +126,12 @@ export function HomePage() {
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
           {galleryImages.map((src, i) => (
             <div
-              key={i}
+              key={src}
               className="aspect-square overflow-hidden rounded-3xl border border-border/60 bg-cream-deep group"
             >
               <img
                 src={src}
-                alt={`Atelier ${i + 1}`}
+                alt={galleryAlts[i] ?? `Atelier Théâtre Thérapie, vue ${i + 1}`}
                 className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                 loading="lazy"
               />
@@ -135,13 +145,13 @@ export function HomePage() {
           <p className="text-sm font-semibold uppercase tracking-widest text-primary/80">
             Une question ?
           </p>
-          <h2 className="mt-3 font-display text-3xl sm:text-4xl text-foreground">Écrivez à Kenza</h2>
+          <h2 className="mt-3 font-display text-3xl sm:text-4xl text-foreground">Écrivez-nous</h2>
           <a
-            href="mailto:kenza.elghadouini@gmail.com"
+            href="mailto:yannbaff@gmail.com"
             className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 text-sm sm:text-base font-semibold hover:opacity-90 transition"
           >
             <Mail className="h-4 w-4" />
-            kenza.elghadouini@gmail.com
+            yannbaff@gmail.com
           </a>
         </div>
       </section>

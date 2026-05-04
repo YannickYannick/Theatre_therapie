@@ -22,7 +22,7 @@ class Workshop(models.Model):
     location = models.CharField(
         "lieu",
         max_length=120,
-        default="L'Âge d'or — 26 rue du Dr Magnan, 75013 Paris",
+        default="L'Âge d'or, 26 rue du Dr Magnan, 75013 Paris",
     )
     max_students = models.PositiveSmallIntegerField("places max", default=8)
     sessions_count = models.PositiveSmallIntegerField("nombre de séances", default=7)

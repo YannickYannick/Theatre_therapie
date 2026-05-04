@@ -22,16 +22,16 @@ def seed_workshops(apps, schema_editor):
         tagline="Centré sur les émotions au plateau et leur utilisation juste et consciente.",
         pitch="On y travaille la sincérité, la précision du jeu, l'écoute et la présence.",
         tone="sky",
-        schedule_time="14h – 16h",
+        schedule_time="14h à 16h",
         dates_text="10, 17, 24, 31 mai · 7, 14, 21 juin",
-        location="L'Âge d'or — 26 rue du Dr Magnan, 75013 Paris",
+        location="L'Âge d'or, 26 rue du Dr Magnan, 75013 Paris",
         max_students=8,
         sessions_count=7,
         price_display="175 € (25 €/séance)",
         program_subtitle="",
         highlight_title="",
         highlight_text="",
-        meta_title="Émotions encore et toujours · Atelier Niveau 2 — Théâtre Thérapie",
+        meta_title="Émotions encore et toujours · Atelier Niveau 2 · Théâtre Thérapie",
         meta_description=(
             "Atelier de théâtre niveau 2 à l'Âge d'or (Paris 13e). 7 séances pour travailler les émotions, "
             "la sincérité et la présence au plateau."
@@ -87,16 +87,16 @@ def seed_workshops(apps, schema_editor):
         tagline="Centré sur le jeu collectif et la prise de risque.",
         pitch="On y travaille la confiance, l'écoute, la cohésion et le plaisir du plateau.",
         tone="mint",
-        schedule_time="16h – 18h",
+        schedule_time="16h à 18h",
         dates_text="17, 24, 31 mai · 7, 14, 21, 28 juin",
-        location="L'Âge d'or — 26 rue du Dr Magnan, 75013 Paris",
+        location="L'Âge d'or, 26 rue du Dr Magnan, 75013 Paris",
         max_students=8,
         sessions_count=7,
         price_display="175 € (25 €/séance)",
         program_subtitle="",
         highlight_title="Objectif final",
         highlight_text="Un match d'improvisation devant un public, dans un vrai format de scène.",
-        meta_title="Et... IMPRO · Atelier d'improvisation — Théâtre Thérapie",
+        meta_title="Et... IMPRO · Atelier d'improvisation · Théâtre Thérapie",
         meta_description=(
             "Atelier d'improvisation théâtrale à l'Âge d'or (Paris 13e). 7 séances jusqu'à un match d'impro "
             "devant un public."

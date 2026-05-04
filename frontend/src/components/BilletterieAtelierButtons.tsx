@@ -39,12 +39,12 @@ export function BilletterieAtelierButtons({ currentSlug, className }: Billetteri
           rel="noopener noreferrer"
           className={activeClass + highlight("emotions")}
         >
-          S&apos;inscrire — Émotions encore et toujours
+          S&apos;inscrire : Émotions encore et toujours
           <ExternalLink className="h-4 w-4 shrink-0 opacity-90" aria-hidden />
         </a>
       ) : (
         <button type="button" disabled className={disabledClass + highlight("emotions")}>
-          Émotions encore et toujours — billetterie à venir
+          Émotions encore et toujours (billetterie à venir)
         </button>
       )}
       {improOk ? (
@@ -54,12 +54,12 @@ export function BilletterieAtelierButtons({ currentSlug, className }: Billetteri
           rel="noopener noreferrer"
           className={activeClass + highlight("impro")}
         >
-          S&apos;inscrire — Et... IMPRO
+          S&apos;inscrire : Et... IMPRO
           <ExternalLink className="h-4 w-4 shrink-0 opacity-90" aria-hidden />
         </a>
       ) : (
         <button type="button" disabled className={disabledClass + highlight("impro")}>
-          Et... IMPRO — billetterie à venir
+          Et... IMPRO (billetterie à venir)
         </button>
       )}
     </div>

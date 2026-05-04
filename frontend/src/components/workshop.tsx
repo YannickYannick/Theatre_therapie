@@ -53,7 +53,7 @@ export function WorkshopHero({
 export function PracticalInfo({
   schedule,
   dates,
-  location = "L'Âge d'or — 26 rue du Dr Magnan, 75013 Paris",
+  location = "L'Âge d'or, 26 rue du Dr Magnan, 75013 Paris",
   maxStudents = 8,
   priceDisplay = "175 € (25 €/séance)",
   sessionsLabel = "7 séances",
@@ -145,7 +145,7 @@ export function WorkshopCTA({ currentSlug }: { currentSlug?: AtelierSlug }) {
       <div className="rounded-[2rem] bg-[color:var(--cream-deep)] border border-border/60 p-8 sm:p-10 text-center">
         <h2 className="font-display text-2xl sm:text-3xl text-primary">Envie de participer ?</h2>
         <p className="mt-3 text-foreground/75 max-w-xl mx-auto">
-          8 places par atelier. Choisissez la billetterie correspondante — les liens s&apos;ouvrent
+          8 places par atelier. Choisissez la billetterie correspondante : les liens s&apos;ouvrent
           dans un nouvel onglet.
         </p>
         <BilletterieImproFootnote className="mt-4 mx-auto" />

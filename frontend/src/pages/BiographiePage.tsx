@@ -4,9 +4,9 @@ import { ArrowRight } from "lucide-react";
 
 export function BiographiePage() {
   useEffect(() => {
-    document.title = "Biographie & équipe — Théâtre Thérapie · Paris";
+    document.title = "Biographie & équipe · Théâtre Thérapie · Paris";
     const desc =
-      "Kenza El Ghadouini et Yannick Bafanga cofondent Théâtre Thérapie à Paris : ateliers de théâtre, improvisation, et accompagnement à la prise de parole.";
+      "Kenza et Yannick cofondent Théâtre Thérapie à Paris : ateliers de théâtre, improvisation, et accompagnement à la prise de parole.";
     const el = document.querySelector('meta[name="description"]');
     if (el) el.setAttribute("content", desc);
   }, []);
@@ -21,7 +21,7 @@ export function BiographiePage() {
           L&apos;équipe
         </h1>
         <p className="mt-4 text-lg text-muted-foreground">
-          Kenza El Ghadouini &amp; Yannick Bafanga — Théâtre Thérapie, Paris.
+          Kenza &amp; Yannick · Théâtre Thérapie, Paris.
         </p>
       </header>
 
@@ -30,20 +30,20 @@ export function BiographiePage() {
           <div className="aspect-[4/5] overflow-hidden rounded-[2rem] border border-border/60 bg-cream-deep shadow-md lg:sticky lg:top-24">
             <img
               src="/images/kenza-el-ghadouini.png"
-              alt="Portrait de Kenza El Ghadouini"
+              alt="Portrait de Kenza"
               className="h-full w-full object-cover"
             />
           </div>
         </div>
 
         <div className="space-y-6 text-foreground/85 leading-relaxed text-[1.05rem]">
-          <h2 className="font-display text-2xl sm:text-3xl text-primary">Kenza El Ghadouini</h2>
+          <h2 className="font-display text-2xl sm:text-3xl text-primary">Kenza</h2>
           <p>
-            Kenza El Ghadouini est comédienne et professeure de théâtre. Formée au{" "}
+            Kenza est comédienne et professeure de théâtre. Formée au{" "}
             <strong className="text-foreground">Cours Florent</strong> puis au{" "}
             <strong className="text-foreground">Cours Clément</strong> à Paris, elle a construit un
-            parcours alliant rigueur académique — Master Commerce à{" "}
-            <strong className="text-foreground">Kedge Business School</strong> — et engagement
+            parcours alliant rigueur académique (Master Commerce à{" "}
+            <strong className="text-foreground">Kedge Business School</strong>) et engagement
             artistique profond. Percussionniste, danseuse de bachata et sportive accomplie, elle
             apporte à la scène une présence physique et une énergie singulière.
           </p>
@@ -94,13 +94,13 @@ export function BiographiePage() {
 
       <section
         className="mt-16 lg:mt-24 pt-12 border-t border-border/60"
-        aria-labelledby="yannick-bafanga"
+        aria-labelledby="yannick"
       >
         <h2
-          id="yannick-bafanga"
+          id="yannick"
           className="font-display text-3xl sm:text-4xl text-primary mb-6"
         >
-          Yannick Bafanga
+          Yannick
         </h2>
         <div className="max-w-3xl space-y-5 text-foreground/85 leading-relaxed text-[1.05rem]">
           <p>
@@ -108,13 +108,13 @@ export function BiographiePage() {
             Yannick accompagne depuis une dizaine d&apos;années des professionnels et des particuliers à{" "}
             <strong className="text-foreground">trouver leur voix</strong>. Son approche, à la fois{" "}
             <strong className="text-foreground">directe et bienveillante</strong>, aide chacun à
-            dépasser ses blocages et à <strong className="text-foreground">oser prendre sa place</strong>{" "}
-            — devant un public, en réunion ou dans les moments où l&apos;on sent que les mots comptent.
+            dépasser ses blocages et à <strong className="text-foreground">oser prendre sa place</strong>,{" "}
+            devant un public, en réunion ou dans les moments où l&apos;on sent que les mots comptent.
           </p>
           <p>
             Issu du <strong className="text-foreground">milieu sportif et du collectif</strong>, il
-            intervient aussi comme <strong className="text-foreground">coach auprès d&apos;équipes</strong>{" "}
-            — dont des <strong className="text-foreground">équipes de rugby</strong> et d&apos;autres
+            intervient aussi comme <strong className="text-foreground">coach auprès d&apos;équipes</strong>,{" "}
+            dont des <strong className="text-foreground">équipes de rugby</strong> et d&apos;autres
             groupes qui veulent renforcer la parole de vestiaire, la cohésion et le soutien mutuel sous
             pression. Autant de situations où l&apos;on apprend vite que le jeu ne tient pas qu&apos;aux
             gestes : il tient au regard, au rythme et à la confiance qu&apos;on se donne les uns les

@@ -33,7 +33,7 @@ export function SiteNav() {
             </NavLink>
           ))}
           <a
-            href="mailto:kenza.elghadouini@gmail.com"
+            href="mailto:yannbaff@gmail.com"
             className="text-sm rounded-full bg-primary text-primary-foreground px-4 py-2 hover:opacity-90 transition"
           >
             Contact
@@ -65,7 +65,7 @@ export function SiteNav() {
               </NavLink>
             ))}
             <a
-              href="mailto:kenza.elghadouini@gmail.com"
+              href="mailto:yannbaff@gmail.com"
               className="mt-2 text-center text-sm rounded-full bg-primary text-primary-foreground px-4 py-2.5"
             >
               Contact

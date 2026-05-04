@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export function NotFoundPage() {
   useEffect(() => {
-    document.title = "404 — Théâtre Thérapie";
+    document.title = "404 · Théâtre Thérapie";
   }, []);
 
   return (
