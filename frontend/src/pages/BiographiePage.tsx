@@ -96,13 +96,23 @@ export function BiographiePage() {
         className="mt-16 lg:mt-24 pt-12 border-t border-border/60"
         aria-labelledby="yannick"
       >
-        <h2
-          id="yannick"
-          className="font-display text-3xl sm:text-4xl text-primary mb-6"
-        >
-          Yannick
-        </h2>
-        <div className="max-w-3xl space-y-5 text-foreground/85 leading-relaxed text-[1.05rem]">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-14">
+          <div className="order-2 lg:order-1">
+            <div className="aspect-[4/5] overflow-hidden rounded-[2rem] border border-border/60 bg-cream-deep shadow-md lg:sticky lg:top-24 max-w-md mx-auto lg:max-w-none">
+              <img
+                src="/images/yannick.png"
+                alt="Portrait de Yannick, formateur en prise de parole et cofondateur de Théâtre Thérapie"
+                className="h-full w-full object-cover object-center"
+              />
+            </div>
+          </div>
+          <div className="order-1 lg:order-2 space-y-5 text-foreground/85 leading-relaxed text-[1.05rem]">
+            <h2
+              id="yannick"
+              className="font-display text-3xl sm:text-4xl text-primary"
+            >
+              Yannick
+            </h2>
           <p>
             <strong className="text-foreground">Coach en prise de parole et développement personnel</strong>,
             Yannick accompagne depuis une dizaine d&apos;années des professionnels et des particuliers à{" "}
@@ -131,6 +141,7 @@ export function BiographiePage() {
             Avec Kenza, il cofonde <strong className="text-foreground/90">Théâtre Thérapie</strong> pour
             proposer une pédagogie où le corps, la parole et le plaisir du jeu vont ensemble.
           </p>
+          </div>
         </div>
       </section>
     </article>

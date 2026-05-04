@@ -50,6 +50,7 @@ export type WorkshopDetail = {
 
 const PROGRAM_SUBTITLE_DEFAULT = "7 séances pour explorer, ressentir et incarner.";
 
+/** Aligné sur le planning PDF « Planning Théâtre Émotions » (public/docs/planning-emotions-theatre.pdf). */
 const emotionsSessions: WorkshopSessionItem[] = [
   {
     sort_order: 0,
@@ -59,24 +60,25 @@ const emotionsSessions: WorkshopSessionItem[] = [
   },
   {
     sort_order: 1,
-    title: "Sincérité et vérité de jeu",
-    description: "Apprendre à jouer simple, juste, et connecté à ce que l'on ressent vraiment.",
-  },
-  {
-    sort_order: 2,
     title: "La colère et la tension juste",
     description: "Travailler l'affirmation émotionnelle sans excès ni agressivité.",
   },
   {
-    sort_order: 3,
+    sort_order: 2,
     title: "La peur et la vulnérabilité",
     description:
       "Explorer les émotions plus fragiles et apprendre à les rendre visibles sans se protéger.",
   },
   {
-    sort_order: 4,
+    sort_order: 3,
     title: "La joie et la légèreté",
     description: "Trouver une énergie vivante, simple et authentique, sans surjeu.",
+  },
+  {
+    sort_order: 4,
+    title: "La tristesse juste",
+    description:
+      "Accueillir la tristesse sans s'effondrer ni la retenir, pour la rendre visible avec douceur, simplicité et vérité.",
   },
   {
     sort_order: 5,
@@ -85,7 +87,7 @@ const emotionsSessions: WorkshopSessionItem[] = [
   },
   {
     sort_order: 6,
-    title: "Carte blanche émotionnelle",
+    title: "Carte blanche émotionnelle ✦",
     description: "Créer une petite forme personnelle ou collective à partir d'une émotion choisie.",
   },
 ];

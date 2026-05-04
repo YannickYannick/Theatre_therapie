@@ -2,11 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Calendar, Clock, MapPin, Users, Euro } from "lucide-react";
 import type { ReactNode } from "react";
 
-import {
-  BilletterieAtelierButtons,
-  BilletterieImproFootnote,
-  type AtelierSlug,
-} from "@/components/BilletterieAtelierButtons";
+import { BilletterieAtelierButtons, type AtelierSlug } from "@/components/BilletterieAtelierButtons";
 
 export type Tone = "sky" | "mint";
 
@@ -148,7 +144,6 @@ export function WorkshopCTA({ currentSlug }: { currentSlug?: AtelierSlug }) {
           8 places par atelier. Choisissez la billetterie correspondante : les liens s&apos;ouvrent
           dans un nouvel onglet.
         </p>
-        <BilletterieImproFootnote className="mt-4 mx-auto" />
         <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
           <BilletterieAtelierButtons currentSlug={currentSlug} />
         </div>

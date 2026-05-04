@@ -5,7 +5,7 @@ import { z } from "zod";
 import { CheckCircle2, Send } from "lucide-react";
 import { toast } from "sonner";
 
-import { BilletterieAtelierButtons, BilletterieImproFootnote } from "@/components/BilletterieAtelierButtons";
+import { BilletterieAtelierButtons } from "@/components/BilletterieAtelierButtons";
 import { getSupabase, isSupabaseConfigured } from "@/integrations/supabase/client";
 
 const schema = z.object({
@@ -100,7 +100,6 @@ export function InscriptionPage() {
 
       <div className="mb-10 rounded-[2rem] bg-[color:var(--cream-deep)] border border-border/60 p-6 sm:p-8 text-center">
         <h2 className="font-display text-xl sm:text-2xl text-primary">Billetterie</h2>
-        <BilletterieImproFootnote className="mt-3 mx-auto" />
         <div className="mt-6 flex justify-center">
           <BilletterieAtelierButtons className="justify-center" />
         </div>

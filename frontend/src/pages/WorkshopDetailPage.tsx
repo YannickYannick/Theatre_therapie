@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { Sparkles } from "lucide-react";
+import { FileDown, Sparkles } from "lucide-react";
 
 import { PresentationAudio } from "@/components/PresentationAudio";
 import type { AtelierSlug } from "@/components/BilletterieAtelierButtons";
@@ -84,6 +84,19 @@ export function WorkshopDetailPage({ slug }: { slug: string }) {
           </>
         }
       />
+      {slug === "emotions" && (
+        <div className="mx-auto max-w-5xl px-5 sm:px-8 pt-4 pb-2">
+          <a
+            href="/docs/planning-emotions-theatre.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-sm font-semibold text-foreground hover:bg-secondary transition"
+          >
+            <FileDown className="h-4 w-4 text-primary shrink-0" aria-hidden />
+            Télécharger le planning (PDF)
+          </a>
+        </div>
+      )}
       <ProgramGrid tone={tone} sessions={sessions} subtitle={data.program_subtitle_resolved} />
       <WorkshopCTA
         currentSlug={slug === "emotions" || slug === "impro" ? (slug as AtelierSlug) : undefined}

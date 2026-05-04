@@ -46,10 +46,6 @@ def seed_workshops(apps, schema_editor):
             "Explorer les émotions dans le corps et apprendre à les reconnaître sans les surjouer.",
         ),
         (
-            "Sincérité et vérité de jeu",
-            "Apprendre à jouer simple, juste, et connecté à ce que l'on ressent vraiment.",
-        ),
-        (
             "La colère et la tension juste",
             "Travailler l'affirmation émotionnelle sans excès ni agressivité.",
         ),
@@ -62,11 +58,15 @@ def seed_workshops(apps, schema_editor):
             "Trouver une énergie vivante, simple et authentique, sans surjeu.",
         ),
         (
+            "La tristesse juste",
+            "Accueillir la tristesse sans s'effondrer ni la retenir, pour la rendre visible avec douceur, simplicité et vérité.",
+        ),
+        (
             "Passer d'une émotion à l'autre",
             "Travailler les transitions émotionnelles et la construction de scènes plus complexes.",
         ),
         (
-            "Carte blanche émotionnelle",
+            "Carte blanche émotionnelle ✦",
             "Créer une petite forme personnelle ou collective à partir d'une émotion choisie.",
         ),
     ]

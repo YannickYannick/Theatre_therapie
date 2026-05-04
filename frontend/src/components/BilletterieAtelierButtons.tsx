@@ -65,27 +65,3 @@ export function BilletterieAtelierButtons({ currentSlug, className }: Billetteri
     </div>
   );
 }
-
-/** Textes d’information tant qu’une billetterie n’est pas branchée (lien Vite). */
-export function BilletterieImproFootnote({ className }: { className?: string }) {
-  const emotionsOk = hasBilletterieEmotions();
-  const improOk = hasBilletterieImpro();
-  if (emotionsOk && improOk) return null;
-  return (
-    <div className={`text-sm text-muted-foreground max-w-xl space-y-2 ${className ?? ""}`}>
-      {!emotionsOk && (
-        <p>
-          La billetterie pour{" "}
-          <span className="font-medium text-foreground/90">Émotions encore et toujours</span> sera
-          ouverte ici dès que le lien de réservation sera publié.
-        </p>
-      )}
-      {!improOk && (
-        <p>
-          La billetterie pour l&apos;atelier{" "}
-          <span className="font-medium text-foreground/90">Et... IMPRO</span> est à venir.
-        </p>
-      )}
-    </div>
-  );
-}

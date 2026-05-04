@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Mail, Sparkles, Users } from "lucide-react";
 
-import { BilletterieAtelierButtons, BilletterieImproFootnote } from "@/components/BilletterieAtelierButtons";
+import { AgeDorMapCard } from "@/components/AgeDorMapCard";
+import { BilletterieAtelierButtons } from "@/components/BilletterieAtelierButtons";
 import type { WorkshopTone } from "@/lib/workshopPresets";
 import { WORKSHOP_LIST } from "@/lib/workshopPresets";
 
@@ -69,13 +70,12 @@ export function HomePage() {
             <div className="mt-8 space-y-4">
               <div>
                 <BilletterieAtelierButtons />
-                <BilletterieImproFootnote className="mt-3" />
               </div>
               <Link
                 to="/biographie"
                 className="inline-flex items-center gap-2 rounded-full border border-border bg-card text-foreground px-6 py-3 text-sm font-semibold hover:bg-secondary transition"
               >
-                Découvrir Kenza
+                Découvrir Kenza et Yannick
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -96,6 +96,10 @@ export function HomePage() {
             </div>
           </div>
         </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 sm:px-8 pb-16">
+        <AgeDorMapCard />
       </section>
 
       <section className="mx-auto max-w-6xl px-5 sm:px-8 pb-20">
