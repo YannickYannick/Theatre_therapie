@@ -137,8 +137,8 @@ export function BiographiePage() {
             Ingénieur de formation et habitué aux <strong className="text-foreground">projets d&apos;équipe</strong>{" "}
             exigeants, il transpose au théâtre la même exigence d&apos;écoute et de clarté collective.
           </p>
-          <p className="text-muted-foreground text-sm">
-            Avec Kenza, il cofonde <strong className="text-foreground/90">Théâtre Thérapie</strong> pour
+          <p>
+            Avec Kenza, il cofonde <strong className="text-foreground">Théâtre Thérapie</strong> pour
             proposer une pédagogie où le corps, la parole et le plaisir du jeu vont ensemble.
           </p>
           </div>
