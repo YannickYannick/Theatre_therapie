@@ -1,5 +1,6 @@
 import { Routes, Route, Outlet } from "react-router-dom";
 import { Toaster } from "sonner";
+import { Analytics } from "@vercel/analytics/react";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { HomePage } from "@/pages/HomePage";
@@ -17,6 +18,7 @@ function Layout() {
       </main>
       <SiteFooter />
       <Toaster richColors position="top-center" />
+      <Analytics />
     </div>
   );
 }
