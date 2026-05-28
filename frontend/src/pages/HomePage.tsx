@@ -106,7 +106,8 @@ export function HomePage() {
         <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
           <h2 className="font-display text-3xl sm:text-4xl text-primary">Les ateliers</h2>
           <p className="text-sm text-muted-foreground max-w-md">
-            Deux ateliers complémentaires, 7 séances chacun, à l&apos;Âge d&apos;or (Paris 13e).
+            Deux ateliers complémentaires (8 séances Émotions, 7 séances Impro), à l&apos;Âge
+            d&apos;or (Paris 13e).
           </p>
         </div>
 

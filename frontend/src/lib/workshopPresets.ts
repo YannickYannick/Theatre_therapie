@@ -65,28 +65,34 @@ const emotionsSessions: WorkshopSessionItem[] = [
   },
   {
     sort_order: 2,
+    title: "Séance découverte (intercalée)",
+    description:
+      "Séance pour accueillir les élèves, se (re)mettre en confiance et clarifier le cadre de travail avant de poursuivre le cursus.",
+  },
+  {
+    sort_order: 3,
     title: "La peur et la vulnérabilité",
     description:
       "Explorer les émotions plus fragiles et apprendre à les rendre visibles sans se protéger.",
   },
   {
-    sort_order: 3,
+    sort_order: 4,
     title: "La joie et la légèreté",
     description: "Trouver une énergie vivante, simple et authentique, sans surjeu.",
   },
   {
-    sort_order: 4,
+    sort_order: 5,
     title: "La tristesse juste",
     description:
       "Accueillir la tristesse sans s'effondrer ni la retenir, pour la rendre visible avec douceur, simplicité et vérité.",
   },
   {
-    sort_order: 5,
+    sort_order: 6,
     title: "Passer d'une émotion à l'autre",
     description: "Travailler les transitions émotionnelles et la construction de scènes plus complexes.",
   },
   {
-    sort_order: 6,
+    sort_order: 7,
     title: "Carte blanche émotionnelle ✦",
     description: "Créer une petite forme personnelle ou collective à partir d'une émotion choisie.",
   },
@@ -141,19 +147,20 @@ const emotionsDetail: WorkshopDetail = {
   pitch: "On y travaille la sincérité, la précision du jeu, l'écoute et la présence.",
   tone: "sky",
   schedule_time: "14h à 16h",
-  dates_text: "10, 17, 24, 31 mai · 7, 14, 21 juin",
+  dates_text:
+    "10, 17, 24, 31 mai · 7, 14, 21 juin (+ 1 séance découverte intercalée — date à confirmer)",
   location: "L'Âge d'or, 26 rue du Dr Magnan, 75013 Paris",
   max_students: 8,
-  sessions_count: 7,
-  sessions_label: "7 séances",
-  price_display: "175 € (25 €/séance)",
+  sessions_count: 8,
+  sessions_label: "8 séances",
+  price_display: "175 €",
   program_subtitle: "",
-  program_subtitle_resolved: PROGRAM_SUBTITLE_DEFAULT,
+  program_subtitle_resolved: "8 séances pour explorer, ressentir et incarner.",
   highlight_title: "",
   highlight_text: "",
   meta_title: "Émotions encore et toujours · Atelier Niveau 2 · Théâtre Thérapie",
   meta_description:
-    "Atelier de théâtre niveau 2 à l'Âge d'or (Paris 13e). 7 séances pour travailler les émotions, la sincérité et la présence au plateau.",
+    "Atelier de théâtre niveau 2 à l'Âge d'or (Paris 13e). 8 séances pour travailler les émotions, la sincérité et la présence au plateau.",
   sessions: emotionsSessions,
 };
 
