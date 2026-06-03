@@ -77,14 +77,14 @@ const emotionsSessions: WorkshopSessionItem[] = [
   },
   {
     sort_order: 4,
-    title: "La joie et la légèreté",
-    description: "Trouver une énergie vivante, simple et authentique, sans surjeu.",
-  },
-  {
-    sort_order: 5,
     title: "La tristesse juste",
     description:
       "Accueillir la tristesse sans s'effondrer ni la retenir, pour la rendre visible avec douceur, simplicité et vérité.",
+  },
+  {
+    sort_order: 5,
+    title: "La joie et la légèreté",
+    description: "Trouver une énergie vivante, simple et authentique, sans surjeu.",
   },
   {
     sort_order: 6,
