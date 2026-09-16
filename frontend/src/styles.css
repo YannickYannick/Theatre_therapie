@@ -43,6 +43,8 @@
   --color-sky-soft-foreground: var(--sky-soft-foreground);
   --color-mint-soft: var(--mint-soft);
   --color-mint-soft-foreground: var(--mint-soft-foreground);
+  --color-lilac-soft: var(--lilac-soft);
+  --color-lilac-soft-foreground: var(--lilac-soft-foreground);
   --color-cream: var(--cream);
   --color-cream-deep: var(--cream-deep);
 
@@ -82,6 +84,9 @@
   --mint-soft: oklch(0.8 0.09 175);
   --mint-soft-foreground: oklch(0.28 0.05 180);
 
+  --lilac-soft: oklch(0.88 0.06 290);
+  --lilac-soft-foreground: oklch(0.32 0.12 290);
+
   --destructive: oklch(0.6 0.22 27);
   --destructive-foreground: oklch(0.985 0.008 70);
 
@@ -111,6 +116,8 @@
   --sky-soft-foreground: oklch(0.953 0.012 70);
   --mint-soft: oklch(0.55 0.1 175);
   --mint-soft-foreground: oklch(0.953 0.012 70);
+  --lilac-soft: oklch(0.42 0.1 290);
+  --lilac-soft-foreground: oklch(0.953 0.012 70);
   --destructive: oklch(0.7 0.19 22);
   --destructive-foreground: oklch(0.953 0.012 70);
   --border: oklch(1 0 0 / 12%);

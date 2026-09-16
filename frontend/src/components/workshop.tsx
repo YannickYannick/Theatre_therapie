@@ -4,7 +4,19 @@ import type { ReactNode } from "react";
 
 import { BilletterieAtelierButtons, type AtelierSlug } from "@/components/BilletterieAtelierButtons";
 
-export type Tone = "sky" | "mint";
+export type Tone = "sky" | "mint" | "lilac";
+
+const toneHero: Record<Tone, string> = {
+  sky: "from-[color:var(--sky-soft)]/45 to-[color:var(--sky-soft)]/10",
+  mint: "from-[color:var(--mint-soft)]/45 to-[color:var(--mint-soft)]/10",
+  lilac: "from-[color:var(--lilac-soft)]/45 to-[color:var(--lilac-soft)]/10",
+};
+
+const toneChip: Record<Tone, string> = {
+  sky: "bg-[color:var(--sky-soft)] text-[color:var(--sky-soft-foreground)]",
+  mint: "bg-[color:var(--mint-soft)] text-[color:var(--mint-soft-foreground)]",
+  lilac: "bg-[color:var(--lilac-soft)] text-[color:var(--lilac-soft-foreground)]",
+};
 
 export function WorkshopHero({
   tone,
@@ -19,20 +31,14 @@ export function WorkshopHero({
   tagline: string;
   pitch: string;
 }) {
-  const toneBg =
-    tone === "sky"
-      ? "from-[color:var(--sky-soft)]/45 to-[color:var(--sky-soft)]/10"
-      : "from-[color:var(--mint-soft)]/45 to-[color:var(--mint-soft)]/10";
-  const toneChip =
-    tone === "sky"
-      ? "bg-[color:var(--sky-soft)] text-[color:var(--sky-soft-foreground)]"
-      : "bg-[color:var(--mint-soft)] text-[color:var(--mint-soft-foreground)]";
+  const toneBg = toneHero[tone];
+  const chip = toneChip[tone];
 
   return (
     <section className={`bg-gradient-to-br ${toneBg} border-b border-border/60`}>
       <div className="mx-auto max-w-5xl px-5 sm:px-8 pt-14 pb-16 lg:pt-20 lg:pb-20">
         <span
-          className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold ${toneChip}`}
+          className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold ${chip}`}
         >
           {badge}
         </span>
@@ -101,10 +107,7 @@ export function ProgramGrid({
   sessions: { title: string; description: string }[];
   subtitle?: string;
 }) {
-  const toneNum =
-    tone === "sky"
-      ? "bg-[color:var(--sky-soft)] text-[color:var(--sky-soft-foreground)]"
-      : "bg-[color:var(--mint-soft)] text-[color:var(--mint-soft-foreground)]";
+  const toneNum = toneChip[tone];
 
   return (
     <section className="mx-auto max-w-5xl px-5 sm:px-8 py-16 lg:py-20">

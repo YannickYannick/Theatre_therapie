@@ -7,6 +7,7 @@ const links = [
   { to: "/biographie", label: "Biographie & équipe", end: false },
   { to: "/emotions", label: "Émotions encore et toujours", end: false },
   { to: "/impro", label: "Et... IMPRO", end: false },
+  { to: "/creation", label: "Jeu et création", end: false },
   { to: "/inscription", label: "Inscription", end: false },
 ] as const;
 

@@ -13,7 +13,7 @@ import {
 import { getWorkshopDetail, type WorkshopTone } from "@/lib/workshopPresets";
 
 function isTone(v: string): v is WorkshopTone {
-  return v === "sky" || v === "mint";
+  return v === "sky" || v === "mint" || v === "lilac";
 }
 
 export function WorkshopDetailPage({ slug }: { slug: string }) {
@@ -99,7 +99,11 @@ export function WorkshopDetailPage({ slug }: { slug: string }) {
       )}
       <ProgramGrid tone={tone} sessions={sessions} subtitle={data.program_subtitle_resolved} />
       <WorkshopCTA
-        currentSlug={slug === "emotions" || slug === "impro" ? (slug as AtelierSlug) : undefined}
+        currentSlug={
+          slug === "emotions" || slug === "impro" || slug === "creation"
+            ? (slug as AtelierSlug)
+            : undefined
+        }
       />
     </>
   );

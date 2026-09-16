@@ -16,10 +16,18 @@ export function getBilletterieImproUrl(): string {
   return trimUrl(import.meta.env.VITE_BILLETTERIE_IMPRO_URL);
 }
 
+export function getBilletterieCreationUrl(): string {
+  return trimUrl(import.meta.env.VITE_BILLETTERIE_CREATION_URL);
+}
+
 export function hasBilletterieEmotions(): boolean {
   return Boolean(getBilletterieEmotionsUrl());
 }
 
 export function hasBilletterieImpro(): boolean {
   return Boolean(getBilletterieImproUrl());
+}
+
+export function hasBilletterieCreation(): boolean {
+  return Boolean(getBilletterieCreationUrl());
 }

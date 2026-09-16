@@ -88,6 +88,13 @@ export function BiographiePage() {
               Atelier Impro
               <ArrowRight className="h-4 w-4" />
             </Link>
+            <Link
+              to="/creation"
+              className="inline-flex items-center gap-2 rounded-full bg-card border border-border text-foreground px-5 py-2.5 text-sm font-semibold hover:bg-secondary transition"
+            >
+              Jeu et création
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </div>

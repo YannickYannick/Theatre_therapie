@@ -1,8 +1,10 @@
 import { ExternalLink } from "lucide-react";
 
 import {
+  getBilletterieCreationUrl,
   getBilletterieEmotionsUrl,
   getBilletterieImproUrl,
+  hasBilletterieCreation,
   hasBilletterieEmotions,
   hasBilletterieImpro,
 } from "@/lib/billetterie";
@@ -13,7 +15,7 @@ const btnBase =
 const activeClass = `${btnBase} bg-primary text-primary-foreground hover:opacity-90 shadow-sm`;
 const disabledClass = `${btnBase} border border-border bg-muted/40 text-muted-foreground cursor-not-allowed opacity-80`;
 
-export type AtelierSlug = "emotions" | "impro";
+export type AtelierSlug = "emotions" | "impro" | "creation";
 
 type BilletterieAtelierButtonsProps = {
   /** Sur une page atelier : léger surlignage du bouton correspondant */
@@ -24,8 +26,10 @@ type BilletterieAtelierButtonsProps = {
 export function BilletterieAtelierButtons({ currentSlug, className }: BilletterieAtelierButtonsProps) {
   const emotionsHref = getBilletterieEmotionsUrl();
   const improHref = getBilletterieImproUrl();
+  const creationHref = getBilletterieCreationUrl();
   const emotionsOk = hasBilletterieEmotions();
   const improOk = hasBilletterieImpro();
+  const creationOk = hasBilletterieCreation();
 
   const highlight = (slug: AtelierSlug) =>
     currentSlug === slug ? " ring-2 ring-primary ring-offset-2 ring-offset-background" : "";
@@ -60,6 +64,21 @@ export function BilletterieAtelierButtons({ currentSlug, className }: Billetteri
       ) : (
         <button type="button" disabled className={disabledClass + highlight("impro")}>
           Et... IMPRO (billetterie à venir)
+        </button>
+      )}
+      {creationOk ? (
+        <a
+          href={creationHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={activeClass + highlight("creation")}
+        >
+          S&apos;inscrire : Jeu et création
+          <ExternalLink className="h-4 w-4 shrink-0 opacity-90" aria-hidden />
+        </a>
+      ) : (
+        <button type="button" disabled className={disabledClass + highlight("creation")}>
+          Jeu et création (billetterie à venir)
         </button>
       )}
     </div>

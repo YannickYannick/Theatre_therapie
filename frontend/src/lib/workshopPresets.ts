@@ -3,7 +3,7 @@
  * Mettre à jour ici et, si besoin, la migration / l’API pour rester cohérents.
  */
 
-export type WorkshopTone = "sky" | "mint";
+export type WorkshopTone = "sky" | "mint" | "lilac";
 
 export type WorkshopListItem = {
   slug: string;
@@ -191,9 +191,79 @@ const improDetail: WorkshopDetail = {
   sessions: improSessions,
 };
 
+const creationSessions: WorkshopSessionItem[] = [
+  {
+    sort_order: 0,
+    title: "Septembre — Créer le groupe et découvrir le plateau",
+    description:
+      "Apprendre à se connaître, créer une cohésion et une confiance collective, développer l'écoute et la disponibilité. Jeux de présentation et d'improvisation, exercices de confiance, occupation de l'espace, rapport aux autres et au public, premières improvisations. À la fin du mois, une dynamique commune commence à se construire et chacun se sent plus à l'aise sur le plateau.",
+  },
+  {
+    sort_order: 1,
+    title: "Octobre — Le corps, la respiration et la voix",
+    description:
+      "Prendre conscience de son corps, développer sa présence, apprendre à respirer et à projeter sa voix. Côté corps : échauffement, ancrage, posture, équilibre, rythme et énergie. Côté voix : souffle, relaxation, projection, articulation, diction, silences. À la fin du mois, chacun identifie ses outils personnels et gagne en maîtrise physique et vocale.",
+  },
+  {
+    sort_order: 2,
+    title: "Novembre — Entrer dans les textes",
+    description:
+      "Découvrir les œuvres, leurs univers et les personnages, puis commencer le travail sur les scènes. Extraits de Tailleur pour dames (Feydeau) : rythme, précision, comique, quiproquos, énergie collective. Extraits de Perplexe (Marius von Mayenburg) : absurde, ruptures, décalage, étrangeté, interprétations multiples. Lectures, intentions, improvisations autour des situations, premiers essais de mise en scène. Les premières scènes sont choisies ; chacun commence à s'approprier son ou ses personnages.",
+  },
+  {
+    sort_order: 3,
+    title: "Décembre — Approfondir le travail des scènes",
+    description:
+      "Approfondir les personnages, la précision du jeu et les intentions, renforcer l'écoute entre partenaires. Enjeux, relations, objectifs, rythme, déplacements, texte, mémorisation progressive, premières mises en scène. On commence aussi à réfléchir à l'assemblage des scènes pour une présentation collective cohérente. À la fin du mois, une première structure se dessine.",
+  },
+  {
+    sort_order: 4,
+    title: "Janvier — Construire la présentation finale",
+    description:
+      "Finaliser le choix des scènes, construire les enchaînements et la cohérence du spectacle, répéter dans les conditions de la représentation. Reprise des scènes, mise en scène, entrées et sorties, rythme général, gestion de l'espace. L'objectif : mettre en valeur le travail de chacun tout en gardant une vraie dynamique de groupe. À la fin du mois, la présentation est structurée et les scènes principales sont en place.",
+  },
+  {
+    sort_order: 5,
+    title: "Février — Répétitions et présentation finale",
+    description:
+      "Finaliser les scènes, stabiliser le jeu, gagner en confiance et préparer la rencontre avec le public. Répétitions complètes, filages, ajustements de mise en scène et de texte, rythme général, gestion du stress, concentration, présence et énergie collective. Les dernières séances se font dans les conditions les plus proches possible du jour J.",
+  },
+];
+
+const creationDetail: WorkshopDetail = {
+  slug: "creation",
+  title: "Jeu et création",
+  badge: "Atelier · 6 mois",
+  level_label: "Tous niveaux",
+  summary:
+    "Six mois de plateau, de la rencontre du groupe jusqu'à une présentation. On y travaille le corps, la voix, puis deux univers : Tailleur pour dames (Feydeau) et Perplexe (Marius von Mayenburg).",
+  tagline: "Six mois de plateau, de la rencontre du groupe à une présentation devant public.",
+  pitch:
+    "Apprendre, expérimenter, progresser, oser… et surtout prendre plaisir à jouer ensemble. Deux univers : Tailleur pour dames de Georges Feydeau, et Perplexe de Marius von Mayenburg.",
+  tone: "lilac",
+  schedule_time: "Horaires à confirmer",
+  dates_text: "13 septembre → 28 février",
+  location: "L'Âge d'or, 26 rue du Dr Magnan, 75013 Paris",
+  max_students: 8,
+  sessions_count: 6,
+  sessions_label: "6 mois",
+  price_display: "Sur demande",
+  program_subtitle: "",
+  program_subtitle_resolved:
+    "Un mois après l'autre, de la cohésion du groupe jusqu'à la présentation de fin février.",
+  highlight_title: "Présentation finale",
+  highlight_text:
+    "Fin février, une petite présentation devant public autour de Tailleur pour dames et Perplexe. Pas un spectacle « parfait » : partager le travail, se confronter au regard du public, vivre l'expérience d'une représentation et célébrer le chemin parcouru ensemble.",
+  meta_title: "Jeu et création · Atelier annuel · Théâtre Thérapie",
+  meta_description:
+    "Atelier de jeu et de création à l'Âge d'or (Paris 13e). Six mois de plateau, de septembre à février, autour de Tailleur pour dames et Perplexe.",
+  sessions: creationSessions,
+};
+
 const WORKSHOP_DETAILS_BY_SLUG: Record<string, WorkshopDetail> = {
   emotions: emotionsDetail,
   impro: improDetail,
+  creation: creationDetail,
 };
 
 /** Liste d’accueil (ordre d’affichage). */
@@ -219,6 +289,17 @@ export const WORKSHOP_LIST: WorkshopListItem[] = [
     schedule_time: improDetail.schedule_time,
     schedule_summary: `${improDetail.schedule_time} · ${improDetail.sessions_label}`,
     sort_order: 1,
+  },
+  {
+    slug: creationDetail.slug,
+    title: creationDetail.title,
+    level_label: creationDetail.level_label,
+    summary: creationDetail.summary,
+    tone: creationDetail.tone,
+    sessions_label: creationDetail.sessions_label,
+    schedule_time: creationDetail.schedule_time,
+    schedule_summary: `${creationDetail.schedule_time} · ${creationDetail.sessions_label}`,
+    sort_order: 2,
   },
 ];
 

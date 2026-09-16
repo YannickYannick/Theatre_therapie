@@ -8,7 +8,7 @@ import type { WorkshopTone } from "@/lib/workshopPresets";
 import { WORKSHOP_LIST } from "@/lib/workshopPresets";
 
 function isTone(v: string): v is WorkshopTone {
-  return v === "sky" || v === "mint";
+  return v === "sky" || v === "mint" || v === "lilac";
 }
 
 /** Galerie « En images » : fichiers dans `public/images/gallery/`. */
@@ -34,7 +34,7 @@ export function HomePage() {
   useEffect(() => {
     document.title = "Théâtre Thérapie · Ateliers de théâtre à Paris";
     const desc =
-      "Cours et ateliers de théâtre à Paris : Kenza et Yannick. Émotions, improvisation, prise de parole.";
+      "Cours et ateliers de théâtre à Paris : Kenza et Yannick. Émotions, improvisation, jeu et création.";
     let el = document.querySelector('meta[name="description"]');
     if (!el) {
       el = document.createElement("meta");
@@ -106,12 +106,12 @@ export function HomePage() {
         <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
           <h2 className="font-display text-3xl sm:text-4xl text-primary">Les ateliers</h2>
           <p className="text-sm text-muted-foreground max-w-md">
-            Deux ateliers complémentaires (8 séances Émotions, 7 séances Impro), à l&apos;Âge
-            d&apos;or (Paris 13e).
+            Trois ateliers complémentaires (8 séances Émotions, 7 séances Impro, 6 mois de
+            jeu et création), à l&apos;Âge d&apos;or (Paris 13e).
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {WORKSHOP_LIST.map((w) => (
             <WorkshopCard
               key={w.slug}
@@ -166,11 +166,15 @@ function WorkshopCard({
   const toneBg =
     tone === "sky"
       ? "bg-[color:var(--sky-soft)]/35"
-      : "bg-[color:var(--mint-soft)]/35";
+      : tone === "mint"
+        ? "bg-[color:var(--mint-soft)]/35"
+        : "bg-[color:var(--lilac-soft)]/35";
   const toneChip =
     tone === "sky"
       ? "bg-[color:var(--sky-soft)] text-[color:var(--sky-soft-foreground)]"
-      : "bg-[color:var(--mint-soft)] text-[color:var(--mint-soft-foreground)]";
+      : tone === "mint"
+        ? "bg-[color:var(--mint-soft)] text-[color:var(--mint-soft-foreground)]"
+        : "bg-[color:var(--lilac-soft)] text-[color:var(--lilac-soft-foreground)]";
 
   return (
     <Link

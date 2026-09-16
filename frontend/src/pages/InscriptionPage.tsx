@@ -16,8 +16,10 @@ const schema = z.object({
     .min(6, "Numéro trop court")
     .max(30, "Numéro trop long"),
   atelier: z
-    .union([z.literal(""), z.enum(["emotions", "impro"])])
-    .refine((v): v is "emotions" | "impro" => v !== "", { message: "Choisissez un atelier" }),
+    .union([z.literal(""), z.enum(["emotions", "impro", "creation"])])
+    .refine((v): v is "emotions" | "impro" | "creation" => v !== "", {
+      message: "Choisissez un atelier",
+    }),
   message: z.string().trim().max(1000).optional().or(z.literal("")),
 });
 
@@ -27,9 +29,10 @@ type FormValues = z.output<typeof schema>;
 const inputClass =
   "w-full rounded-xl border border-input bg-background px-3 py-2.5 text-sm text-foreground shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring h-11";
 
-const ATELIER_LABEL: Record<"emotions" | "impro", string> = {
+const ATELIER_LABEL: Record<"emotions" | "impro" | "creation", string> = {
   emotions: "Émotions encore et toujours",
   impro: "Et... IMPRO",
+  creation: "Jeu et création",
 };
 
 function buildInscriptionMailto(values: FormValues): string {
@@ -71,7 +74,7 @@ export function InscriptionPage() {
   useEffect(() => {
     document.title = "Inscription · Théâtre Thérapie · Paris";
     const desc =
-      "Inscrivez-vous à un atelier Théâtre Thérapie à l'Âge d'or (Paris 13e) : Émotions encore et toujours ou Et... IMPRO.";
+      "Inscrivez-vous à un atelier Théâtre Thérapie à l'Âge d'or (Paris 13e) : Émotions encore et toujours, Et... IMPRO, ou Jeu et création.";
     const el = document.querySelector('meta[name="description"]');
     if (el) el.setAttribute("content", desc);
   }, []);
@@ -170,6 +173,7 @@ export function InscriptionPage() {
               <option value="">Sélectionnez un atelier</option>
               <option value="emotions">Émotions encore et toujours</option>
               <option value="impro">Et... IMPRO</option>
+              <option value="creation">Jeu et création</option>
             </select>
           </Field>
 

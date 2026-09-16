@@ -31,6 +31,7 @@ export default function App() {
         <Route path="biographie" element={<BiographiePage />} />
         <Route path="emotions" element={<WorkshopDetailPage slug="emotions" />} />
         <Route path="impro" element={<WorkshopDetailPage slug="impro" />} />
+        <Route path="creation" element={<WorkshopDetailPage slug="creation" />} />
         <Route path="inscription" element={<InscriptionPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
