@@ -242,7 +242,7 @@ const creationDetail: WorkshopDetail = {
     "Apprendre, expérimenter, progresser, oser… et surtout prendre plaisir à jouer ensemble. Deux univers : Tailleur pour dames de Georges Feydeau, et Perplexe de Marius von Mayenburg.",
   tone: "lilac",
   schedule_time: "Horaires à confirmer",
-  dates_text: "5 octobre → 28 mars 2027",
+  dates_text: "4 octobre → 28 mars 2027",
   location: "L'Âge d'or, 26 rue du Dr Magnan, 75013 Paris",
   max_students: 8,
   sessions_count: 6,

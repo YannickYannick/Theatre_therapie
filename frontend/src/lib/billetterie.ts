@@ -13,7 +13,10 @@ export function getBilletterieImproUrl(): string {
 }
 
 export function getBilletterieCreationUrl(): string {
-  return trimUrl(import.meta.env.VITE_BILLETTERIE_CREATION_URL);
+  return (
+    trimUrl(import.meta.env.VITE_BILLETTERIE_CREATION_URL) ||
+    "https://www.billetweb.fr/theatre54"
+  );
 }
 
 export function hasBilletterieEmotions(): boolean {
